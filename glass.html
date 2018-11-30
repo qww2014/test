@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<style>
+		/*
+		#d1 img{
+			width: 380px;
+			height: 280px;
+		}
+		*/
+		#d2 img{
+			width: 1900px;
+			height: 1400px;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+		#d1{
+			width: 380px;
+			height: 280px;  
+			position: relative;
+			overflow: hidden;
+		}
+		#d1 span{
+			width: 100px;
+			height: 100px;
+			background-color: pink;
+			opacity: .5;
+			position: absolute;
+			top: 0;
+			left: 0;
+			display: none;
+		}
+		#mask{
+			width: 380px;
+			height: 280px; 
+			position: absolute;
+			top: 0;
+			left: 0;
+			opacity: 0; 
+			cursor: move;
+		}
+		#d2{
+			width: 500px;
+			height: 500px;
+			position: absolute;
+			top: 50px;
+			left: 500px;
+			overflow: hidden;
+		}
+	</style>
+	<script src="js/jquery-1.11.3.js"></script>
+</head>
+<body>
+	<div id="d1">
+		<img src="img/glass.jpg">
+		<span></span>
+		<div id="mask"></div>
+	</div>
+	<div id="d2">
+		<img src="img/glass.jpg">
+	</div>
+	<script>
+		$(function(){
+			var s1   = $("#d1>span")
+			var i1   = $("#d1>img")
+			var mask = $("#mask")
+			var i2   = $("#d2>img")
+			mask.hover(   //鼠标移入 mask  span显示
+				function(){
+					s1.toggle()
+				}
+			)
+			/**
+			 * e.clientX、e.clientY  获取鼠标坐标
+			 * d1.offsetLeft:       d1距离屏幕左侧的距离
+			 * d1.offsetTop:        d1距离屏幕顶部的距离
+			 * s1.offsetWidth:      s1的padding+border+width
+			 */
+				.mousemove(function(e){
+				// 将s1的中部 移到鼠标位置
+				var left = e.clientX - d1.offsetLeft - s1[0].offsetWidth/2;
+				var top = e.clientY - d1.offsetTop - s1[0].offsetHeight/2;
+				// 限制s1的活动范围
+				if(left < 0){
+					left = 0
+				}else if (left > d1.offsetWidth - s1[0].offsetWidth) {
+					// d1.offsetWidth - s1.offsetWidth  s1能够移动的最大宽度
+					left = d1.offsetWidth - s1[0].offsetWidth
+				};
+				if (top < 0) {
+					top = 0
+				}else if (top > d1.offsetHeight - s1[0].offsetHeight) {
+					//d1.offsetHeight - s1.offsetHeight  s1能够能够移动的最大高度
+					top = d1.offsetHeight - s1[0].offsetHeight
+				};					
+				s1.css({left,top})
+				/**
+				 * 大图与小图的比例
+				 */
+				var proportionX = i2.width()/i1.width();
+				var proportionY = i2.height()/i1.height();
+				var i2_left = -proportionX * left + "px";
+				var i2_top = -proportionX * top + "px"
+				i2.css({left:i2_left,top:i2_top})
+			})
+		})
+	</script>
+</body>
+</html>

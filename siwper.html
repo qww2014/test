@@ -1,0 +1,61 @@
+<html>
+ 
+	<head>
+		<meta name="layout" content="main">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+ 
+	</head>
+	<style>
+		*{margin: 0; padding: 0;}
+		ul{height: 28px;overflow: hidden;}li{height: 28px;}li{list-style: none;}a{text-decoration: none;}
+	</style>
+	<body>
+		<div class="notice_scroll">
+			<ul class="show_notice" style="margin-top: 0px;">
+				<li>
+					<a href="" target="_blank">APP签到积分使用规则调整</a>
+				</li>
+				<li>
+					<a href="" target="_blank">【公告】防诈骗提醒</a>
+				</li>
+				<li>
+					<a href="" target="_blank">【紧急通知】关于短信发送异常的公告</a>
+				</li>
+				<li>
+					<a href="" target="_blank">5周年庆，盛大聚“惠”</a>
+				</li>
+			</ul>
+		</div>
+		
+	</body>
+ 
+</html>
+<script type="text/javascript">
+	$(function(){
+		picFunc(".notice_scroll")
+	})
+	//垂直滚动
+	function picFunc(obj) {
+		var scrollTimer;
+		$(obj).hover(function() {
+			clearInterval(scrollTimer);
+		}, function() {
+			scrollTimer = setInterval(function() {
+				scrollNews($(obj));
+			}, 3000);
+		});
+ 
+		function scrollNews(obj) {
+			var $self = obj.find("ul:first");
+			var lineHeight = $self.find("li:first").height();
+			$self.animate({
+				"margin-top": -lineHeight + "px"
+			}, 600, function() {
+				$self.css({
+					"margin-top": "0px"
+				}).find("li:first").appendTo($self);
+			})
+		}
+	}
+</script>
