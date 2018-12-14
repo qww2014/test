@@ -1,0 +1,819 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0057)http://www.bslxx.com/a/mianshiti/tiku/2017/1020/1027.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>微信小程序面试题，附答案_奔三路学习网</title>
+<meta name="keywords" content="微信,小,程序,面,试题,附,答案,、,简单,描述,">
+<meta name="description" content="1、简单描述下 微信小程序的相关文件类型？ 答：微信小程序项目结构主要有四个文件类型,如下 一、WXML （WeiXin Markup Language）是框架设计的一套标签语言，结合基础组件、事件系统，">
+<link href="./微信小程序面试题，附答案_奔三路学习网_files/dedecms.css" rel="stylesheet" media="screen" type="text/css">
+<meta http-equiv="mobile-agent" content="format=xhtml;url=/m/view.php?aid=1027">
+<script src="./微信小程序面试题，附答案_奔三路学习网_files/hm.js.下载"></script><script type="text/javascript">if(window.location.toString().indexOf('pref=padindex') != -1){}else{if(/AppleWebKit.*Mobile/i.test(navigator.userAgent) || (/MIDP|SymbianOS|NOKIA|SAMSUNG|LG|NEC|TCL|Alcatel|BIRD|DBTEL|Dopod|PHILIPS|HAIER|LENOVO|MOT-|Nokia|SonyEricsson|SIE-|Amoi|ZTE/.test(navigator.userAgent))){if(window.location.href.indexOf("?mobile")<0){try{if(/Android|Windows Phone|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)){window.location.href="/m/view.php?aid=1027";}else if(/iPad/i.test(navigator.userAgent)){}else{}}catch(e){}}}}</script>
+<script language="javascript" type="text/javascript" src="./微信小程序面试题，附答案_奔三路学习网_files/dedeajax2.js.下载"></script>
+
+<script language="javascript" type="text/javascript" src="./微信小程序面试题，附答案_奔三路学习网_files/j.js.下载"></script>
+<script language="javascript" type="text/javascript">
+<!--
+function CheckLogin(){
+	  var taget_obj = document.getElementById('_ajax_feedback');
+	  myajax = new DedeAjax(taget_obj,false,false,'','','');
+	  myajax.SendGet2("/member/ajax_feedback.php");
+	  DedeXHTTP = null;
+}
+function postBadGood(ftype,fid)
+{
+	var taget_obj = document.getElementById(ftype+fid);
+	var saveid = GetCookie('badgoodid');
+	if(saveid != null)
+	{
+		var saveids = saveid.split(',');
+		var hasid = false;
+		saveid = '';
+		j = 1;
+		for(i=saveids.length-1;i>=0;i--)
+		{
+			if(saveids[i]==fid && hasid) continue;
+			else {
+				if(saveids[i]==fid && !hasid) hasid = true;
+				saveid += (saveid=='' ? saveids[i] : ','+saveids[i]);
+				j++;
+				if(j==10 && hasid) break;
+				if(j==9 && !hasid) break;
+			}
+		}
+		if(hasid) { alert('您刚才已表决过了喔！'); return false;}
+		else saveid += ','+fid;
+		SetCookie('badgoodid',saveid,1);
+	}
+	else
+	{
+		SetCookie('badgoodid',fid,1);
+	}
+	myajax = new DedeAjax(taget_obj,false,false,'','','');
+	myajax.SendGet2("/plus/feedback.php?aid="+fid+"&action="+ftype+"&fid="+fid);
+}
+function postDigg(ftype,aid)
+{
+	var taget_obj = document.getElementById('newdigg');
+	var saveid = GetCookie('diggid');
+	if(saveid != null)
+	{
+		var saveids = saveid.split(',');
+		var hasid = false;
+		saveid = '';
+		j = 1;
+		for(i=saveids.length-1;i>=0;i--)
+		{
+			if(saveids[i]==aid && hasid) continue;
+			else {
+				if(saveids[i]==aid && !hasid) hasid = true;
+				saveid += (saveid=='' ? saveids[i] : ','+saveids[i]);
+				j++;
+				if(j==20 && hasid) break;
+				if(j==19 && !hasid) break;
+			}
+		}
+		if(hasid) { alert("您已经顶过该帖，请不要重复顶帖 ！"); return; }
+		else saveid += ','+aid;
+		SetCookie('diggid',saveid,1);
+	}
+	else
+	{
+		SetCookie('diggid',aid,1);
+	}
+	myajax = new DedeAjax(taget_obj,false,false,'','','');
+	var url = "/plus/digg_ajax.php?action="+ftype+"&id="+aid;
+	myajax.SendGet2(url);
+}
+function getDigg(aid)
+{
+	var taget_obj = document.getElementById('newdigg');
+	myajax = new DedeAjax(taget_obj,false,false,'','','');
+	myajax.SendGet2("/plus/digg_ajax.php?id="+aid);
+	DedeXHTTP = null;
+}
+-->
+</script>
+
+<style type="text/css">
+  .dede_pages ul li {
+
+    padding: 6px 12px !important;
+}
+.viewbox .dede_pages {
+    margin-bottom: 28px;}
+</style>
+</head>
+<body class="articleview">
+<!--<base target="_blank">--><base href="." target="_blank">
+
+<div class="header_top">  
+    <div class="w960 center">  
+     <span id="time" class="time">奔三路 - 你30岁前的学习路！</span>
+     <div class="toplinks"><a href="http://www.bslxx.com/plus/heightsearch.php" target="_blank">高级搜索</a>|<a href="http://www.bslxx.com/data/sitemap.html" target="_blank">网站地图</a>|<a href="http://www.bslxx.com/tags.php">TAG标签</a><a href="http://www.bslxx.com/data/rssmap.html" class="rss">RSS订阅</a><span>[<a href="http://www.bslxx.com/a/mianshiti/tiku/2017/1020/1027.html" onclick="this.style.behavior=&#39;url(#default#homepage)&#39;;this.setHomePage(&#39;http://www.bslxx.com&#39;);">设为首页</a>] [<a href="javascript:window.external.AddFavorite(&#39;http://www.bslxx.com&#39;,&#39;奔三路学习网&#39;)">加入收藏</a>]</span></div>
+    </div> 
+</div>
+<div class="top w960 center">
+      <div class="title">
+        <h1><a href="http://www.bslxx.com/"><img src="./微信小程序面试题，附答案_奔三路学习网_files/logo.gif" alt="奔三路学习网"></a> </h1>
+      </div>
+      <div class="banner"></div>
+     
+
+  </div><!-- //top -->
+<div class="header">
+	<style type="text/css">
+  #navMenu dl{width: 138%;font-size: 12px;}
+   
+   body{font-family: '微软雅黑' !important;}
+   .e2 li a.title{
+  overflow: hidden;
+    line-height: 25px;
+    font-size: 16px;
+    margin-left: 2px;
+    font-weight: 700;
+}.e2 li:hover {
+    background-color: #f7f7f7;
+}
+  </style>
+	<!-- //菜单 -->
+	<div class="module blue mT10 wrapper w963">
+  	<div class="top">
+    <div id="navMenu">
+       <ul style="width: 100%">
+        <li><a href="http://www.bslxx.com/"><span>主页</span></a></li>
+         
+        <li><a href="http://www.bslxx.com/a/vue/" rel="dropmenu2"><span>vue面试通</span></a>
+          <dl>
+            <dd><a href="http://www.bslxx.com/a/vue/mianshiti/">面试题</a></dd>
+            <dd><a href="http://www.bslxx.com/a/vue/kaiyuankuangjia/">开源框架</a></dd>
+            <dd><a href="http://www.bslxx.com/a/vue/do.html">挑战做题</a></dd>
+            <dd><a href="http://www.bslxx.com/a/vue/iviewkuangjia/">iview框架</a></dd>
+            <dd><a href="http://www.bslxx.com/a/vue/element_ui/">Element框架</a></dd>
+            <dd><a href="http://www.bslxx.com/a/vue/vuexiangmuzuopin/">vue项目作品</a></dd>
+      
+          </dl>
+        </li>
+        
+        <li><a href="http://www.bslxx.com/a/mianshiti/" rel="dropmenu3"><span>前端面试通</span></a>
+          <dl>
+              <dd><a href="http://www.bslxx.com/a/mianshiti/tiku/">题库</a></dd>
+      
+             <dd><a href="http://www.bslxx.com/a/mianshiti/bijingmianjing/">笔经面经</a></dd>
+            <dd><a href="http://www.bslxx.com/a/mianshiti/do.html">挑战做题</a></dd>
+          </dl>
+        </li>
+        
+        <li><a href="http://www.bslxx.com/a/mianfeivueke/" rel="dropmenu4"><span>大前端知识</span></a>
+          <dl>
+      
+            
+            <dd><a href="http://www.bslxx.com/a/mianfeivueke/vueluyou/">vue</a></dd>
+            
+            <dd><a href="http://www.bslxx.com/a/mianfeivueke/php/">php</a></dd>
+            <dd><a href="http://www.bslxx.com/a/mianfeivueke/vuecongrumendaojingtong/">大神说</a></dd>
+            
+               <dd><a href="http://www.bslxx.com/a/mianfeivueke/Python/">Python</a></dd>
+            
+            <dd><a href="http://www.bslxx.com/a/mianfeivueke/Node_js/">Node.js</a></dd>
+            
+            <dd><a href="http://www.bslxx.com/a/mianfeivueke/JavaScript/">JavaScript</a></dd>
+            <dd><a href="http://www.bslxx.com/a/dati/do.php?t=php">挑战做题</a></dd>
+          </dl>
+        </li>
+        
+        <li><a href="http://www.bslxx.com/a/zixun/" rel="dropmenu1"><span>奔三职场</span></a>
+          <dl>
+            <dd><a href="http://www.bslxx.com/a/zixun/zhichang/">职场</a></dd>
+      
+            
+            <dd><a href="http://www.bslxx.com/a/zixun/qianduan/">前端</a></dd>
+            <dd><a href="http://www.bslxx.com/a/zixun/tanpan/">谈判</a></dd>
+            
+            <dd><a href="http://www.bslxx.com/a/zixun/mianshi/">面试技巧</a></dd>
+            <dd><a href="http://www.bslxx.com/a/zixun/yiwanjitang/">一碗鸡汤</a></dd>
+            
+            <dd><a href="http://www.bslxx.com/a/zixun/do.html">挑战做题</a></dd>
+          </dl>
+        </li>
+        
+        <li><a href="http://www.bslxx.com/a/zhaoqianduangongzuo/"><span>靠谱工作</span></a>
+           
+        </li>
+        
+        <li id="_userlogin" style="float: right;"><a href="http://www.bslxx.com/member/login.php" rel="dropmenu1"><span>登录</span></a> | <a href="http://www.bslxx.com/member/index_do.php?fmdo=user&amp;dopost=regnew" rel="dropmenu1"><span>注册</span></a> </li>
+      </ul>
+    </div>  
+     
+		</div>
+	</div>
+</div><!-- //header -->
+
+<script type="text/javascript">
+	function CheckLogin(){
+	  var taget_obj = document.getElementById('_userlogin');
+	  myajax = new DedeAjax(taget_obj,false,false,'','','');
+	  myajax.SendGet2("/member/ajax_loginsta.php");
+	  DedeXHTTP = null;
+	}
+	CheckLogin()
+</script>
+<!-- /header -->
+<div class="w960 center clear mt1">
+<div class="pleft">
+ <div class="place"> <strong>当前位置:</strong> <a href="http://www.bslxx.com/">主页</a> &gt; <a href="http://www.bslxx.com/a/mianshiti/">前端面试通</a> &gt; <a href="http://www.bslxx.com/a/mianshiti/tiku/">题库</a> &gt;  </div>
+ <!-- /place -->
+ <div class="viewbox">
+  <div class="title">
+   <h2>微信小程序面试题，附答案</h2>
+  </div>
+  <!-- /title -->
+  <div class="info"> <small>时间:</small>2018-04-23 16:38<small>来源:</small>未知 <small>作者:</small>admin  </div>
+  <!-- /info -->
+  
+  <div class="intro">1、简单描述下 微信小程序的相关文件类型？ 答：微信小程序项目结构主要有四个文件类型,如下 一、WXML （WeiXin Markup Language）是框架设计的一套标签语言，结合基础组件、事件系统，</div>
+  
+  <div class="content">
+  <img src="./微信小程序面试题，附答案_奔三路学习网_files/1-1G0201133223B.jpg"> <br>
+ 
+      <strong>1、简单描述下</strong><span style="margin:0px; padding:0px"><strong>微信小程序的相关文件类型？</strong><br>
+答：微信小程序项目结构主要有四个文件类型,如下<br>
+<br>
+一、WXML （WeiXin Markup Language）是框架设计的一套标签语言，结合基础组件、事件系统，可以构建出页面的结构。内部主要是微信自己定义的一套组件。<br>
+<br>
+二、WXSS (WeiXin Style Sheets)是一套样式语言，用于描述 WXML 的组件样式，<br>
+<br>
+二、js 逻辑处理，网络请求<br>
+<br>
+三、json 小程序设置，如页面注册，页面标题及tabBar。<br>
+<br>
+<br>
+四、app.json<br>
+<br>
+必须要有这个文件，如果没有这个文件，项目无法运行，因为微信框架把这个作为配置文件入口，整个小程序的全局配置。包括页面注册，网络设置，以及小程序的window背景色，配置导航条样式，配置默认标题。<br>
+<br>
+五、app.js<br>
+必须要有这个文件，没有也是会报错！但是这个文件创建一下就行 什么都不需要写以后我们可以在这个文件中监听并处理小程序的生命周期函数、声明全局变量。<br>
+<br>
+六、app.wxss<br>
+<br>
+<br>
+<strong>2、你是怎么<span style="margin:0px; padding:0px">封装微信小程序的</span>数据请求的？</strong><br>
+答：<br>
+一、将所有的接口放在统一的js文件中并导出<br>
+<br>
+二、在app.js中创建封装请求数据的方法<br>
+<br>
+三、在子页面中调用封装的方法请求数据<br>
+<br>
+<br>
+<strong>3、有哪些参数传值的方法？</strong><br>
+答：<br>
+一、给HTML元素添加data-*属性来传递我们需要的值，然后通过e.currentTarget.dataset或onload的param参数获取。但data-名称不能有大写字母和不可以存放对象<br>
+二、设置id 的方法标识来传值通过e.currentTarget.id获取设置的id的值,然后通过设置全局对象的方式来传递数值<br>
+三、在navigator中添加参数传值<br>
+<br>
+<strong>4、你使用过哪些方法<span style="margin:0px; padding:0px">，来提高</span>微信小程序的应用速度？</strong><br>
+答：<br>
+一、提高页面加载速度<br>
+二、用户行为预测<br>
+三、减少默认data的大小<br>
+四、组件化方案<br>
+<br>
+<span style="margin:0px; padding:0px"><strong>5、<span style="margin:0px; padding:0px"><span style="margin:0px; padding:0px">小程序与原生App哪个好？ </span></span></strong><br>
+答： 小程序除了拥有公众号的低开发成本、低获客成本低以及无需下载等优势，在服务请求延时与用户使用体验是都得到了较大幅度&nbsp; 的提升，使得其能够承载跟复杂的服务功能以及使用户获得更好的用户体验。</span><br>
+<br>
+<span style="margin:0px; padding:0px"><span style="margin:0px; padding:0px"><strong>6、简述微信小程序原理<span style="margin:0px; padding:0px"><span style="margin:0px; padding:0px">？ </span></span></strong><br>
+答：微信小程序采用JavaScript、WXML、WXSS三种技术进行开发，从技术讲和现有的前端开发差不多，但深入挖掘的话却又有所不同。<br>
+<br>
+JavaScript：首先JavaScript的代码是运行在微信App中的，并不是运行在浏览器中，因此一些H5技术的应用，需要微信App提供对应的API支持，而这限制住了H5技术的应用，且其不能称为严格的H5，可以称其为伪H5，同理，微信提供的独有的某些API，H5也不支持或支持的不是特别好。<br>
+<br>
+WXML：WXML微信自己基于XML语法开发的，因此开发时，只能使用微信提供的现有标签，HTML的标签是无法使用的。<br>
+<br>
+WXSS：WXSS具有CSS的大部分特性，但并不是所有的都支持，而且支持哪些，不支持哪些并没有详细的文档。<br>
+<br>
+微信的架构，是数据驱动的架构模式，它的UI和数据是分离的，所有的页面更新，都需要通过对数据的更改来实现。<br>
+<br>
+小程序分为两个部分webview和appService。其中webview主要用来展现UI，appService有来处理业务逻辑、数据及接口调用。它们在两个进程中运行，通过系统层JSBridge实现通信，实现UI的渲染、事件的处理<br>
+<br>
+<strong>7、<span style="margin:0px; padding:0px"><span style="margin:0px; padding:0px"><span style="margin:0px; padding:0px">分析下</span></span></span>微信小程序的优劣势？</strong><br>
+答：</span></span><br>
+优势：<br>
+<br>
+1、无需下载，通过搜索和扫一扫就可以打开。<br>
+<br>
+2、良好的用户体验：打开速度快。<br>
+<br>
+3、开发成本要比App要低。<br>
+<br>
+4、安卓上可以添加到桌面，与原生App差不多。<br>
+<br>
+5、为用户提供良好的安全保障。小程序的发布，微信拥有一套严格的审查流程， 不能通过审查的小程序是无法发布到线上的。<br>
+<br>
+劣势：<br>
+<br>
+1、限制较多。页面大小不能超过1M。不能打开超过5个层级的页面。<br>
+<br>
+2、样式单一。小程序的部分组件已经是成型的了，样式不可以修改。例如：幻灯片、导航。<br>
+<br>
+3、推广面窄，不能分享朋友圈，只能通过分享给朋友，附近小程序推广。其中附近小程序也受到微信的限制。<br>
+<br>
+4、依托于微信，无法开发后台管理功能。<br>
+<br>
+<br>
+<strong>8、微信小程序与H5的区别？</strong><br>
+<br>
+答：<br>
+<br>
+第一条是运行环境的不同<br>
+<br>
+传统的HTML5的运行环境是浏览器，包括webview，而微信小程序的运行环境并非完整的浏览器，是微信开发团队基于浏览器内核完全重构的一个内置解析器，针对小程序专门做了优化，配合自己定义的开发语言标准，提升了小程序的性能。<br>
+<br>
+<br>
+第二条是开发成本的不同<br>
+<br>
+只在微信中运行，所以不用再去顾虑浏览器兼容性，不用担心生产环境中出现不可预料的奇妙BUG<br>
+<br>
+<br>
+第三条是获取系统级权限的不同<br>
+<br>
+系统级权限都可以和微信小程序无缝衔接<br>
+<br>
+<br>
+第四条便是应用在生产环境的运行流畅度<br>
+<br>
+长久以来，当HTML5应用面对复杂的业务逻辑或者丰富的页面交互时，它的体验总是不尽人意，需要不断的对项目优化来提升用户体验。但是由于微信小程序运行环境独立</span><br>
+<br>
+<br>
+<strong>9、怎么解决小程序的异步请求问题？</strong><br>
+<br>
+答：<br>
+在回调函数中调用下一个组件的函数：<br>
+<br>
+app.js
+<blockquote>
+	<p>
+		success: function (info) {<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; that.apirtnCallback(info)<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</p>
+</blockquote>
+index.js
+<blockquote>
+	<p>
+		&nbsp;onLoad: function () {<br>
+		&nbsp;&nbsp;&nbsp; app.apirtnCallback = res =&gt; {<br>
+		&nbsp;&nbsp;&nbsp;&nbsp; console.log(res)&nbsp;<br>
+		&nbsp;&nbsp;&nbsp; }<br>
+		｝</p>
+</blockquote>
+<p>
+	<strong>10、小程序的双向绑定和vue哪里不一样？</strong><br>
+	<br>
+	答：<br>
+	小程序直接this.data的属性是不可以同步到视图的，必须调用：<br>
+	&nbsp;</p>
+<blockquote>
+	<p>
+		this.setData({<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; noBind:true<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; })</p>
+</blockquote>
+<p>
+	<strong>11、小程序的wxss和css有哪些不一样的地方？</strong><br>
+	<br>
+	答：一、wxss的图片引入需使用外链地址；二、没有Body；样式可直接使用import导入<br>
+	<br>
+	<strong>12、webview中的页面怎么跳回小程序中？</strong><br>
+	<br>
+	答：首先要引入最新版的jweixin-1.3.2.js，然后</p>
+<blockquote>
+	<p>
+		wx.miniProgram.navigateTo({</p>
+	<div>
+		&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; url: '/pages/login/login'+'$params'</div>
+	<div>
+		&nbsp; &nbsp; &nbsp; &nbsp; })</div>
+</blockquote>
+<strong>13、小程序关联微信公众号如何确定用户的</strong><strong>唯一性？</strong><br>
+答：使用wx.getUserInfo方法withCredentials为 true 时 可获取encryptedData，里面有 union_id。后端需要进行对称解密<br>
+<br>
+<strong>14、如何实现下拉刷新</strong><strong>？</strong><br>
+答：用view代替scroll-view,,设置onPullDownRefresh函数实现<br>
+<br>
+<strong>15、使用webview直接加载要注意哪些事项</strong><strong>？</strong><br>
+答：一、必须要在小程序后台使用管理员添加业务域名；二、h5页面跳转至小程序的脚本必须是1.3.1以上；三、微信分享只可以都是小程序的主名称了，如果要自定义分享的内容，需小程序版本在1.7.1以上；四、h5的支付不可以是微信公众号的appid，必须是小程序的appid，而且用户的openid也必须是用户和小程序的。<br>
+<br>
+<strong>16、小程序调用后台接口遇到哪些问题</strong><strong>？</strong><br>
+答：一、数据的大小有限制，超过范围会直接导致整个小程序崩溃，除非重启小程序；2、小程序不可以直接渲染文章内容页这类型的html文本内容，若需显示要借住插件，但插件渲染会导致页面加载变慢，所以最好在后台对文章内容的html进行过滤，后台直接处理批量替换p标签div标签为view标签，然后其它的标签让插件来做，减轻前端的时间。<br>
+<br>
+<strong>17、webview的页面怎么跳转到小程序导航的页面？</strong><br>
+答：小程序导航的页面可以通过switchTab，但默认情况是不会重新加载数据的。<br>
+若需加载新数据，则在success属性中加入以下代码即可：<br>
+<blockquote>
+	<p>
+		success: function (e) {<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; var page = getCurrentPages().pop();<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (page == undefined || page == null) return;<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; page.onLoad();<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</p>
+</blockquote>
+<p>
+	&nbsp; webview的页面，则通过</p>
+<blockquote>
+	<p>
+		&nbsp;wx.miniProgram.switchTab({<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url: '/pages/index/index'<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; })</p>
+</blockquote>
+<strong>18、小程序和Vue写法的区别？</strong><br>
+答：<br>
+一、循环遍历的时候：小程序是wx:for="list"，而Vue是v-for="info in list"<br>
+二、调用data模型的时候：小程序是this.data.uinfo，而Vue是this.uinfo；给模型赋值也不一样，小程序是this.setData({uinfo:1})，而Vue是直接this.uinfo=1<br>
+
+      
+      (责任编辑：admin)
+	  
+  </div>
+  <!-- /content -->
+  <div class="dede_pages">
+   <ul class="pagelist">
+    
+   </ul>
+  </div>
+ 
+  
+  <!-- /pages -->
+  <!-- //顶踩 -->
+  <div class="newdigg" id="newdigg"><div class="diggbox digg_good" onmousemove="this.style.backgroundPosition=&#39;left bottom&#39;;" onmouseout="this.style.backgroundPosition=&#39;left top&#39;;" onclick="postDigg(&#39;good&#39;,1027)">
+            <div class="digg_act">顶一下</div>
+            <div class="digg_num">(140)</div>
+            <div class="digg_percent">
+                <div class="digg_percent_bar"><span style="width:97.20%"></span></div>
+                <div class="digg_percent_num">97.20%</div>
+            </div>
+        </div>
+        <div class="diggbox digg_bad" onmousemove="this.style.backgroundPosition=&#39;right bottom&#39;;" onmouseout="this.style.backgroundPosition=&#39;right top&#39;;" onclick="postDigg(&#39;bad&#39;,1027)">
+            <div class="digg_act">踩一下</div>
+            <div class="digg_num">(4)</div>
+            <div class="digg_percent">
+                <div class="digg_percent_bar"><span style="width:2.80%"></span></div>
+                <div class="digg_percent_num">2.80%</div>
+            </div>
+        </div></div>
+  <script language="javascript" type="text/javascript">getDigg(1027);</script>
+  <!-- //顶踩部份的源码结束 -->
+  <!-- //分享代码开始 -->
+  
+  <!-- //分享代码结束 -->
+  <div class="boxoff"> <strong>------分隔线----------------------------</strong> </div>
+  <div class="handle">
+   <div class="context">
+    <ul>
+     <li>上一篇：<a href="http://www.bslxx.com/a/mianshiti/tiku/2017/1019/979.html">项目mysql和页面等优化，全栈要知道的面试题 |</a> </li>
+     <li>下一篇：<a href="http://www.bslxx.com/a/mianshiti/tiku/2017/1020/1028.html">2017年前端面试题整理汇总100题 - 张林的博客</a> </li>
+    </ul>
+   </div>
+   <!-- /context -->
+   <div class="actbox">
+    <ul>
+     <li id="act-fav"><a href="http://www.bslxx.com/plus/stow.php?aid=1027" target="_blank">收藏</a></li>
+     <li id="act-err"><a href="http://www.bslxx.com/plus/erraddsave.php?aid=1027&amp;title=%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%9D%A2%E8%AF%95%E9%A2%98%EF%BC%8C%E9%99%84%E7%AD%94%E6%A1%88" target="_blank">挑错</a></li>
+     <li id="act-pus"><a href="http://www.bslxx.com/plus/recommend.php?aid=1027" target="_blank">推荐</a></li>
+     <li id="act-pnt"><a href="http://www.bslxx.com/a/mianshiti/tiku/2017/1020/1027.html#" onclick="window.print();">打印</a></li>
+    </ul>
+   </div>
+   <!-- /actbox -->
+  </div>
+  <!-- /handle -->
+  <!-- //AJAX评论区 -->
+ <!-- //主模板必须要引入/include/dedeajax2.js -->
+<a name="postform"></a>
+<div class="mt1">
+		<dl class="tbox">
+			<dt>
+				<strong>发表评论</strong>
+				<span class="more"></span>
+			</dt>
+			<dd>
+				<div class="dede_comment_post">
+          <form action="http://www.bslxx.com/a/mianshiti/tiku/2017/1020/1027.html#" method="post" name="feedback">
+          <input type="hidden" name="dopost" value="send">
+          <input type="hidden" name="comtype" value="comments">
+          <input type="hidden" name="aid" value="1027">
+          <input type="hidden" name="fid" id="feedbackfid" value="0">
+          <div class="dcmp-title">
+						<small>请自觉遵守互联网相关的政策法规，严禁发布色情、暴力、反动的言论。</small>
+					</div><!-- /dcmp-title -->
+					<div class="dcmp-stand">
+						<strong>评价:</strong>
+							<input type="radio" name="feedbacktype" checked="1" value="feedback" id="dcmp-stand-neu"><label for="dcmp-stand-neu"><img src="./微信小程序面试题，附答案_奔三路学习网_files/cmt-neu.gif">中立</label>
+							<input type="radio" name="feedbacktype" value="good" id="dcmp-stand-good"><label for="dcmp-stand-good"><img src="./微信小程序面试题，附答案_奔三路学习网_files/cmt-good.gif">好评</label>
+							<input type="radio" name="feedbacktype" value="bad" id="dcmp-stand-bad"><label for="dcmp-stand-bad"><img src="./微信小程序面试题，附答案_奔三路学习网_files/cmt-bad.gif">差评</label>
+					</div><!-- /dcmp-stand -->
+                    <div class="clr"></div>
+                    <div class="dcmp-mood">
+						<strong>表情:</strong>
+						<ul>            
+								                   
+						</ul>
+					</div><!-- /dcmp-mood -->
+					<div class="dcmp-content">
+						<textarea cols="60" name="msg" rows="5" class="ipt-txt"></textarea>
+					</div><!-- /dcmp-content -->
+					<div class="dcmp-post"><!--未登陆-->
+							<div class="dcmp-userinfo" id="_ajax_feedback">
+								用户名:<input type="text" name="username" size="16" class="ipt-txt" style="text-transform: uppercase;">
+                                验证码:<input type="text" name="validate" size="4" class="ipt-txt" style="text-transform:uppercase;"><img src="./微信小程序面试题，附答案_奔三路学习网_files/vdimgck.php" id="validateimg" style="cursor:pointer" onclick="this.src=this.src+\&#39;?\&#39;" title="点击我更换图片" alt="点击我更换图片">
+                <input type="checkbox" name="notuser" id="dcmp-submit-guest"><label for="dcmp-submit-guest">匿名? </label>
+							</div>
+              
+							<div class="dcmp-submit">
+								<button type="button" onclick="PostComment()">发表评论</button>
+							</div>
+						</div>
+        </form>
+				</div>
+			</dd>
+		</dl>
+	</div><!-- //评论表单区结束 -->
+
+<!-- //评论内容区 -->
+	<a name="commettop"></a>
+	<div class="mt1">
+			<dl class="tbox">
+				<dt>
+					<strong>最新评论</strong>
+					<span class="more"><a href="http://www.bslxx.com/plus/feedback.php?aid=1027">进入详细评论页&gt;&gt;</a></span>
+				</dt>
+				<!-- //这两个ID的区块必须存在，否则JS会出错 -->
+				<dd id="commetcontentNew"></dd>
+				<dd id="commetcontent">系统已经禁止评论功能！</dd>
+			</dl>
+	</div>
+<!--
+//由于评论载入时使用异步传输，因此必须在最后一步加载（DIGG和评论框须放在评论内容前面）
+//如果一定需要提前的把myajax.SendGet改为myajax.SendGet2，但可能会引起页面阻滞
+-->
+<script language="javascript">
+function LoadCommets(page)
+{
+		var taget_obj = document.getElementById('commetcontent');
+		var waithtml = "<div style='line-height:50px'><img src='/images/loadinglit.gif' />评论加载中...</div>";
+		var myajax = new DedeAjax(taget_obj, true, true, '', 'x', waithtml);
+		myajax.SendGet2("/plus/feedback_ajax.php?dopost=getlist&aid=1027&page="+page);
+		DedeXHTTP = null;
+}
+function PostComment()
+{
+		var f = document.feedback;
+		var nface = '6';
+		var nfeedbacktype = 'feedback';
+		var nvalidate = '';
+		var nnotuser = '';
+		var nusername = '';
+		var npwd = '';
+		var taget_obj = $DE('commetcontentNew');
+		var waithtml = "<div style='line-height:30px'><img src='/images/loadinglit.gif' />正在发送中...</div>";
+		if(f.msg.value=='')
+		{
+			alert("评论内容不能为空！");
+			return;
+		}
+		if(f.validate)
+		{
+			if(f.validate.value=='') {
+				alert("请填写验证码！");
+				return;
+			}
+			else {
+				nvalidate = f.validate.value;
+			}
+		}
+		if(f.msg.value.length > 500)
+		{
+			alert("你的评论是不是太长了？请填写500字以内的评论。");
+			return;
+		}
+		if(f.feedbacktype) {
+			for(var i=0; i < f.feedbacktype.length; i++)
+				if(f.feedbacktype[i].checked) nfeedbacktype = f.feedbacktype[i].value;
+		}
+		if(f.face) {
+			for(var j=0; j < f.face.length; j++)
+				if(f.face[j].checked) nface = f.face[j].value;
+		}
+		if(f.notuser.checked) nnotuser = '1';
+		if(f.username) nusername = f.username.value;
+		if(f.pwd) npwd = f.pwd.value;
+		
+		var myajax = new DedeAjax(taget_obj, false, true, '', '', waithtml);
+		myajax.sendlang = 'utf-8';
+		myajax.AddKeyN('dopost', 'send');
+		myajax.AddKeyN('aid', '1027');
+		myajax.AddKeyN('fid', f.fid.value);
+		myajax.AddKeyN('face', nface);
+		myajax.AddKeyN('feedbacktype', nfeedbacktype);
+		myajax.AddKeyN('validate', nvalidate);
+		myajax.AddKeyN('notuser', nnotuser);
+		myajax.AddKeyN('username', nusername);
+		myajax.AddKeyN('pwd', npwd);
+		myajax.AddKeyN('msg', f.msg.value);
+		myajax.SendPost2('/plus/feedback_ajax.php');
+		f.msg.value = '';
+		f.fid.value = 0;
+		if(f.validate)
+		{
+			if($DE('validateimg')) $DE('validateimg').src = "/include/vdimgck.php?"+f.validate.value;
+			f.validate.value = '';
+		}
+}
+function quoteCommet(fid)
+{
+	document.feedback.fid.value = fid;
+}
+LoadCommets(1);
+</script><!-- //评论内容区结束 -->
+
+ </div>
+ <!-- /viewbox -->
+ <div class="append_html"></div>
+  </div>
+<!-- //左边内容结束 -->
+<!-- //右边内容开始 -->
+<div class="pright"> <div class="infos_userinfo">
+  <dl class="tbox light">
+   <dt class="light"><strong>发布者资料</strong></dt>
+   <dd class="light"> <a href="http://www.bslxx.com/member/index.php?uid=smith" class="userface"><img src="./微信小程序面试题，附答案_奔三路学习网_files/myface.jpg" width="52" height="52"></a> <a href="http://www.bslxx.com/member/index.php?uid=smith" class="username">史密斯</a> <span class="useract"> <a href="http://www.bslxx.com/member/index.php?uid=smith" class="useract-vi">查看详细资料</a> <a href="http://www.bslxx.com/member/index.php?uid=smith&amp;action=guestbook" class="useract-pm">发送留言</a> <a href="http://www.bslxx.com/member/index.php?uid=smith&amp;action=newfriend" class="useract-af">加为好友</a> </span> <span class="userinfo-sp"><small>用户等级:</small>注册会员</span> <span class="userinfo-sp"><small>注册时间:</small>2017-11-24 11:11</span> <span class="userinfo-sp"><small>最后登录:</small>2018-09-02 11:09</span> </dd>
+  </dl>
+ </div>
+ <div class="pright">
+  <a style="margin-top: 10px" href="https://s.click.taobao.com/cyjf6Nw" target="_blank">
+    <img src="./微信小程序面试题，附答案_奔三路学习网_files/300-600.jpg">
+  </a> 
+    <a style="display: block; margin-top: 10px" href="https://s.click.taobao.com/Yjwg6Nw" target="_blank">
+    <img src="./微信小程序面试题，附答案_奔三路学习网_files/300x600.jpg">
+  </a> 
+  </div> 
+ <div class="pright" style="display: none;">
+  <div>
+   <dl class="tbox">
+    <dt><strong>栏目列表</strong></dt>
+    <dd>
+     <ul class="d6">
+      
+      <li><a href="http://www.bslxx.com/a/mianshiti/tiku/HTML5/">HTML5</a></li>
+      
+      <li><a href="http://www.bslxx.com/a/mianshiti/tiku/javascript/">javascript</a></li>
+      
+     </ul>
+    </dd>
+   </dl>
+  </div> 
+  <div class="commend mt1">
+   <dl class="tbox light">
+    <dt class="light"><strong>推荐内容</strong></dt>
+    <dd class="light">
+     <ul class="d4">
+      <li><a href="http://www.bslxx.com/a/mianshiti/tiku/2017/1020/1027.html">微信小程序面试题，附答案</a>
+       <p>1、简单描述下 微信小程序的相关文件类型？ 答：微信小程序项...</p>
+      </li>
+<li><a href="http://www.bslxx.com/a/mianshiti/tiku/2017/1031/1223.html">史上最全的前端面试题</a>
+       <p>position的值， relative和absolute分别是相对于谁进行定位的？absol...</p>
+      </li>
+<li><a href="http://www.bslxx.com/a/mianshiti/tiku/javascript/2017/1105/1405.html">十五道JavaScript前端面试题</a>
+       <p>面试题按类型来分，主要涉及到技术与非技术两大类，今天我们...</p>
+      </li>
+<li><a href="http://www.bslxx.com/a/mianshiti/tiku/2017/1031/1258.html">Web前端开发工程师常见的面试题</a>
+       <p>前端页面由哪三层构成，分别是什么，作用是什么清除浮动的方...</p>
+      </li>
+<li><a href="http://www.bslxx.com/a/mianshiti/tiku/2017/1031/1210.html">易车网Web前端面试题（一面和二面</a>
+       <p>1.引入css样式的方式有哪几种？四中方式,重点注意权重和导入...</p>
+      </li>
+<li><a href="http://www.bslxx.com/a/mianshiti/tiku/2017/1019/952.html">前端开发面试题汇总【HTML&amp;CSS部</a>
+       <p>本文由我收集总结了一些前端面试题，初学者阅后也要用心钻研...</p>
+      </li>
+
+     </ul>
+    </dd>
+   </dl>
+  </div>
+  <!-- /commend -->
+  <div class="hot mt1">
+   <dl class="tbox light">
+    <dt class="light"><strong>热点内容</strong></dt>
+    <dd class="light">
+     <ul class="c1 ico2">
+      <li><a href="http://www.bslxx.com/a/mianshiti/tiku/2017/1020/1027.html">微信小程序面试题，附答</a></li>
+<li><a href="http://www.bslxx.com/a/mianshiti/tiku/2017/1031/1217.html">Web前端笔试115道题（带答</a></li>
+<li><a href="http://www.bslxx.com/a/mianshiti/tiku/2017/1019/953.html">前端js的ES6面试题汇总，附</a></li>
+<li><a href="http://www.bslxx.com/a/mianshiti/tiku/2018/0302/1802.html">18道JS面试题及答案</a></li>
+<li><a href="http://www.bslxx.com/a/mianshiti/tiku/2018/0227/1758.html">阿里前端P6+总结，附面试</a></li>
+<li><a href="http://www.bslxx.com/a/mianshiti/tiku/2017/1218/1520.html">91道js面试题，附必过答案</a></li>
+<li><a href="http://www.bslxx.com/a/mianshiti/tiku/2018/0627/2008.html">小程序踩过的那些面试题</a></li>
+<li><a href="http://www.bslxx.com/a/mianshiti/tiku/javascript/2017/1213/1505.html">十道es6的Promise面试题，附</a></li>
+<li><a href="http://www.bslxx.com/a/mianshiti/tiku/2017/1218/1519.html">75道css面试题，附必过答案</a></li>
+<li><a href="http://www.bslxx.com/a/mianshiti/tiku/2017/1218/1521.html">16道jQuery面试题，附必过答</a></li>
+
+     </ul>
+    </dd>
+   </dl>
+  </div>
+  <a href="http://www.bslxx.com/member/index_do.php?fmdo=user&amp;dopost=regnew"><img src="./微信小程序面试题，附答案_奔三路学习网_files/ask.png"></a>
+   <!-- <div style="margin-top: 20px; "><img src="/msq.jpg" style="width: 100%; "></div> -->
+   
+ </div>
+ <!-- /pright -->
+</div> 
+<script language="javascript" type="text/javascript" src="./微信小程序面试题，附答案_奔三路学习网_files/j.js(1).下载"></script>
+<div style="width: 1200px;margin: 0 auto">
+  <a href="https://s.click.taobao.com/kGHh6Nw" target="_blank">
+    <img src="./微信小程序面试题，附答案_奔三路学习网_files/1200-100.jpg">
+  </a>
+</div>
+
+<!-- //底部模板 -->
+<div class="footer w960 center mt1 clear">
+ 
+    <div class="footer_left"></div>
+    <div class="footer_body">
+	<p class="powered">    
+		Powered by <a href="http://www.bslxx.com/" title="奔三路学习网" target="_blank"><strong>bslxx</strong></a> © 2004-2018   Inc.<br></p><div class="copyright">Copyright © 2015-2017  bslxx.com&nbsp;&nbsp;<a href="http://www.miitbeian.gov.cn/" target="_blank">粤ICP备15056892号-1</a></div> &nbsp; <a style="width: 48px;" onclick="$(window).scrollTop(0)" class="rtn_top"><b>你击败了<span>20.01</span>%的面试者</b><br>返回顶部↑</a><p></p>        
+<!-- /powered -->
+   </div>
+   <div class="footer_right"></div>
+</div>
+<script type="text/javascript">
+	 
+var num = localStorage.getItem('num')
+localStorage.setItem('num',++num)
+var cur_per = Number($('.rtn_top span').html())+num/100
+if (cur_per>100) {
+	$('.rtn_top b').html('你已打遍天下无敌手了！')
+}else{
+	$('.rtn_top span').html(cur_per)
+}
+$(window).scroll( function(){ 
+    if( $(this).scrollTop() > 100){
+      $('.header').addClass('fixedd')
+        
+    }else{
+      $('.header').removeClass('fixedd')
+    }
+} );
+
+
+var _hmt = _hmt || [];
+
+(function() {
+
+  var hm = document.createElement("script");
+
+  hm.src = "//hm.baidu.com/hm.js?ef3412d220ae7476f632a60549d75aa3";
+
+  var s = document.getElementsByTagName("script")[0]; 
+
+  s.parentNode.insertBefore(hm, s);
+
+})();
+
+</script>
+<style type="text/css">
+  .xcxewn:hover{width: 280px !important}
+</style>
+<div class="xcxewn" style="position: fixed; top: 145px; right: 0; width:80px; background-color: #fff; z-index: 9898; text-align: center; ">
+  <img style="width:100%;" src="./微信小程序面试题，附答案_奔三路学习网_files/xcx.jpg">
+  <p>关注奔三路</p>
+</div>
+
+
+<!-- /footer -->
+<script type="text/javascript">
+  var page_num = 0; //当前是第几页
+  var t_href = $('.handle .context ul li').eq(0).find('a').attr('href'); //当前是第几页
+    var lock = true
+    $(window).scroll(function  () {
+      if ($('body').height() - $(document).scrollTop() - $(window).height()<=100) {
+        if (lock) {
+           
+
+          $.get(t_href,function  (rtnData) {
+
+              
+               
+               lock=true
+               $(".append_html").append($(rtnData).find('.viewbox'));
+               t_href =  $('.append_html .viewbox').eq(page_num).find('.handle .context ul li').eq(0).find('a').attr('href'); 
+
+               ++page_num;
+            
+          })
+          lock =false;
+        }
+        
+      }
+    })
+</script>
+ 
+
+
+</div></body></html>

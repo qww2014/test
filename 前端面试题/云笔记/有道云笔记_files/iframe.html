@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<!-- saved from url=(0041)https://note.youdao.com/share/iframe.html -->
+<html><head lang="en"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <title></title>
+<style type="text/css">img[filename]{cursor:pointer !important;}
+img{cursor:-webkit-zoom-in !important;}
+img[src="DEFAULTIMAGE"] {display: none !important;}
+.search-hit-node {font-style: normal;background-color: #FFFF00;}
+.search-hit-node.current {background-color:#FF9632;}
+
+.innerlink-icon {
+    width: 16px;
+    height: 16px;
+    margin: 0 6px;
+    vertical-align: middle;
+}
+::-webkit-scrollbar{height:8px;width:10px;background:transparent;border-radius:5px;}
+::-webkit-scrollbar-button{display:none;}
+::-webkit-scrollbar-track{background-color:transparent;}
+::-webkit-scrollbar-track-piece{background:transparent;}
+::-webkit-scrollbar-thumb{width:10px;min-height:15px;background:rgba(118, 176, 243, 0.3);border-radius: 0;margin-right:1px;}
+::-webkit-scrollbar-thumb:hover{background: rgba(118, 176, 243, 0.3);}
+::-webkit-scrollbar-thumb:active{background: rgba(118, 176, 243, 0.3);}
+
+html,body{margin:0;padding:0;overflow:auto;pointer-events:none}body{overflow:visible;position:relative;padding-bottom:3px}.editor-area{display:block;padding:20px 20px 0 25px;min-height:100%;pointer-events:all;box-sizing:border-box;outline:0;overflow:visible;font-size:14px;font-family:Microsoft YaHei;word-break:break-word}.editor-area *{background-color:inherit}.editor-attachment{cursor:default}p{margin:5px 0}img:not(.editor-attachment){cursor:default;display:inline-block;margin-top:8px}img[data-media-type=image]{max-width:100%!important;height:auto!important}table{font-size:inherit;border-collapse:collapse;margin-top:10px;margin-bottom:10px;display:table}table td,table th{word-break:break-all;word-wrap: break-word;border:1px solid #999;padding:0;min-height:25px;min-width:25px;height:25px}table td>div{min-width:2px}a[href]{cursor:pointer}code,pre{font-family:Monaco,Consolas,Courier,"Lucida Console",monospace;font-size:12px;line-height:16px;font-style:normal}pre{white-space:pre-wrap}.ynote-handwrite-br{display:block!important;clear:both;width:0;height:0;visibility:hidden}.ynote-handwrite-caret{display:inline-block;width:0;line-height:99px;height:60px}.ynote-handwrite-area{line-height:60px}img[data-media-type=todo]{margin-top:6px;cursor:pointer}article.format-painter-active{cursor:url(../yneditor/cursor_fp.cur),auto}
+@charset "utf-8";
+/*参考 
+* old.css
+* bulbeditor
+* https://github.com/sofish/typo.css
+* https://github.com/necolas/normalize.css
+* http://ant.design/docs/spec/typography
+*/
+html,
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', Helvetica, Tahoma, Arial, 'Hiragino Sans GB', 'Microsoft YaHei', '微软雅黑', SimSun, '宋体', Heiti, '黑体', sans-serif;
+  word-break: keep-all;
+  word-wrap: break-word;
+}
+html {
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  line-height: 1.75;
+  text-rendering: optimizelegibility;
+}
+.editor-area {
+  display: block;
+  padding: 50px 45px;
+  min-height: 100%;
+  pointer-events: all;
+  box-sizing: border-box;
+  outline: 0;
+  overflow: visible;
+  font-size: 14px;
+  font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', Helvetica, Tahoma, Arial, 'Hiragino Sans GB', 'Microsoft YaHei', '微软雅黑', SimSun, '宋体', Heiti, '黑体', sans-serif;
+  word-break: keep-all;
+  overflow-x: scroll;
+  word-wrap: break-word;
+}
+.default-text {
+  font-size: 14px;
+  font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', Helvetica, Tahoma, Arial, 'Hiragino Sans GB', 'Microsoft YaHei', '微软雅黑', SimSun, '宋体', Heiti, '黑体', sans-serif;
+  color: #393939;
+  font-weight: normal;
+  font-style: normal;
+  text-decoration: none;
+  line-height: 1.75;
+}
+a[href] {
+  cursor: pointer;
+}
+code,
+pre {
+  font-family: Monaco, Consolas, Courier, "Lucida Console", monospace;
+  font-size: 12px;
+  line-height: 16px;
+  font-style: normal;
+}
+pre {
+  white-space: pre-wrap;
+}
+img {
+  max-width: 600px !important;
+  height: auto !important;
+}
+article.format-painter-active {
+  cursor: url(https://note.youdao.com/editor/web/bulbeditor/cursor_fp.cur), auto;
+}
+.ynote-handwrite-br {
+  display: block !important;
+  clear: both;
+  width: 0;
+  height: 0;
+  visibility: hidden;
+}
+.ynote-handwrite-caret {
+  display: inline-block;
+  width: 0;
+  line-height: 99px;
+  height: 60px;
+}
+.ynote-handwrite-area {
+  line-height: 60px;
+}
+img[data-media-type=todo] {
+  margin-top: 6px;
+  cursor: pointer;
+}
+img[src=DEFAULTIMAGE] {
+  display: none!important;
+}
+::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+  background: transparent;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-button {
+  display: none;
+}
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+::-webkit-scrollbar-track-piece {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  width: 8px;
+  min-height: 15px;
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #7d7d7d;
+}
+::-webkit-scrollbar-thumb:active {
+  background: #7d7d7d;
+}
+div[yne-bulb-block="paragraph"] {
+  font-size: 14px;
+  font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', Helvetica, Tahoma, Arial, 'Hiragino Sans GB', 'Microsoft YaHei', '微软雅黑', SimSun, '宋体', Heiti, '黑体', sans-serif;
+  color: #393939;
+  font-weight: normal;
+  font-style: normal;
+  text-decoration: none;
+  line-height: 1.75;
+  white-space: pre-wrap;
+  word-break: normal;
+}
+div[yne-bulb-block="paragraph"] a {
+  color: #003884;
+  text-decoration: underline;
+}
+div[yne-bulb-block="attachment"] {
+  font-size: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', Helvetica, Tahoma, Arial, 'Hiragino Sans GB', 'Microsoft YaHei', '微软雅黑', SimSun, '宋体', Heiti, '黑体', sans-serif;
+}
+.attachment-container {
+  display: inline-block;
+  position: relative;
+  outline: none;
+  width: 280px;
+  height: 64px;
+  border-radius: 4px;
+  background-color: #ffffff !important;
+  border: solid 1px #e0e1e5;
+  vertical-align: middle;
+}
+.attachment-container .attachment-icon {
+  margin: 15px 19px 17px 17px;
+  float: left;
+  -webkit-print-color-adjust: exact;
+}
+.attachment-container .attachment-title {
+  line-height: 18px;
+  height: 18px;
+  font-size: 12px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  text-align: justify;
+  color: #393939;
+  margin-top: 16px;
+  width: 166px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  cursor: default;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.attachment-container .attachment-title::selection {
+  background: transparent;
+}
+.attachment-container .attachment-title::-moz-selection {
+  background: transparent;
+}
+.attachment-container .attachment-title .attachment-title-name {
+  max-width: 115px;
+  display: inline-block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  margin: 0;
+}
+.attachment-container .attachment-title .attachment-title-name::selection {
+  background: transparent;
+}
+.attachment-container .attachment-title .attachment-title-name::-moz-selection {
+  background: transparent;
+}
+.attachment-container .attachment-title .attachment-title-type {
+  display: inline-block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  margin: 0;
+}
+.attachment-container .attachment-title .attachment-title-type::selection {
+  background: transparent;
+}
+.attachment-container .attachment-title .attachment-title-type::-moz-selection {
+  background: transparent;
+}
+.attachment-container .attachment-size {
+  line-height: 15px;
+  font-size: 12px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  text-align: justify;
+  color: #797979;
+  cursor: default;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  height: 14px;
+}
+.attachment-container .attachment-size::selection {
+  background: transparent;
+}
+.attachment-container .attachment-size::-moz-selection {
+  background: transparent;
+}
+.attachment-container .attachment-download {
+  position: absolute;
+  right: 0;
+  z-index: 9;
+  margin-top: -26px;
+  margin-right: 22px;
+  cursor: pointer;
+  display: none;
+}
+.attachment-container:hover {
+  z-index: 9;
+}
+.attachment-container:hover .attachment-download {
+  display: block;
+}
+.attachment-container::selection {
+  background: transparent;
+}
+.attachment-container::-moz-selection {
+  background: transparent;
+}
+img[data-media-type="attachment"] {
+  cursor: pointer;
+}
+div[yne-bulb-block="image"] {
+  padding: 5px 0;
+  line-height: 1;
+}
+div[yne-bulb-block="image"] img {
+  cursor: -webkit-zoom-in !important;
+  max-width: 600px;
+  height: auto;
+  border: 0;
+}
+div[yne-bulb-block="image"] .img-title {
+  margin-top: 7px;
+  min-height: 18px;
+  font-size: 12px;
+  line-height: 1.29;
+  color: #595959;
+  word-break: break-word;
+  white-space: pre-wrap;
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", Helvetica, Tahoma, Arial, "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", SimSun, "宋体", Heiti, "黑体", sans-serif;
+}
+ul {
+  margin: 0;
+  list-style-type: disc;
+}
+ul ul {
+  list-style-type: circle;
+}
+ul ul ul {
+  list-style-type: square;
+}
+ul ul ul ul {
+  margin: 0;
+  list-style-type: disc;
+}
+ul ul ul ul ul {
+  list-style-type: circle;
+}
+ul ul ul ul ul ul {
+  list-style-type: square;
+}
+ul ul ul ul ul ul ul {
+  margin: 0;
+  list-style-type: disc;
+}
+ul ul ul ul ul ul ul ul {
+  list-style-type: circle;
+}
+ul ul ul ul ul ul ul ul ul {
+  list-style-type: square;
+}
+ul ul ul ul ul ul ul ul ul ul {
+  margin: 0;
+  list-style-type: disc;
+}
+ul ul ul ul ul ul ul ul ul ul ul {
+  list-style-type: circle;
+}
+ul ul ul ul ul ul ul ul ul ul ul ul {
+  list-style-type: square;
+}
+ul ul ul ul ul ul ul ul ul ul ul ul ul {
+  margin: 0;
+  list-style-type: disc;
+}
+ul ul ul ul ul ul ul ul ul ul ul ul ul ul {
+  list-style-type: circle;
+}
+ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul {
+  list-style-type: square;
+}
+ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul {
+  margin: 0;
+  list-style-type: disc;
+}
+ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul {
+  list-style-type: circle;
+}
+ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul {
+  list-style-type: square;
+}
+ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul {
+  margin: 0;
+  list-style-type: disc;
+}
+ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul {
+  list-style-type: circle;
+}
+ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul {
+  list-style-type: square;
+}
+ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul {
+  margin: 0;
+  list-style-type: disc;
+}
+ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul {
+  list-style-type: circle;
+}
+ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul {
+  list-style-type: square;
+}
+ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul {
+  margin: 0;
+  list-style-type: disc;
+}
+ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul {
+  list-style-type: circle;
+}
+ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul {
+  list-style-type: square;
+}
+ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul {
+  margin: 0;
+  list-style-type: disc;
+}
+ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul {
+  list-style-type: circle;
+}
+ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul {
+  list-style-type: square;
+}
+ol {
+  list-style-type: decimal;
+}
+ol ol {
+  list-style-type: lower-alpha;
+}
+ol ol ol {
+  list-style-type: lower-roman;
+}
+ol ol ol ol {
+  list-style-type: decimal;
+}
+ol ol ol ol ol {
+  list-style-type: lower-alpha;
+}
+ol ol ol ol ol ol {
+  list-style-type: lower-roman;
+}
+ol ol ol ol ol ol ol {
+  list-style-type: decimal;
+}
+ol ol ol ol ol ol ol ol {
+  list-style-type: lower-alpha;
+}
+ol ol ol ol ol ol ol ol ol {
+  list-style-type: lower-roman;
+}
+ol ol ol ol ol ol ol ol ol ol {
+  list-style-type: decimal;
+}
+ol ol ol ol ol ol ol ol ol ol ol {
+  list-style-type: lower-alpha;
+}
+ol ol ol ol ol ol ol ol ol ol ol ol {
+  list-style-type: lower-roman;
+}
+ol ol ol ol ol ol ol ol ol ol ol ol ol {
+  list-style-type: decimal;
+}
+ol ol ol ol ol ol ol ol ol ol ol ol ol ol {
+  list-style-type: lower-alpha;
+}
+ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol {
+  list-style-type: lower-roman;
+}
+ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol {
+  list-style-type: decimal;
+}
+ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol {
+  list-style-type: lower-alpha;
+}
+ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol {
+  list-style-type: lower-roman;
+}
+ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol {
+  list-style-type: decimal;
+}
+ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol {
+  list-style-type: lower-alpha;
+}
+ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol {
+  list-style-type: lower-roman;
+}
+ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol {
+  list-style-type: decimal;
+}
+ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol {
+  list-style-type: lower-alpha;
+}
+ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol {
+  list-style-type: lower-roman;
+}
+ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol {
+  list-style-type: decimal;
+}
+ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol {
+  list-style-type: lower-alpha;
+}
+ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol {
+  list-style-type: lower-roman;
+}
+ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol {
+  list-style-type: decimal;
+}
+ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol {
+  list-style-type: lower-alpha;
+}
+ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol {
+  list-style-type: lower-roman;
+}
+ul,
+ol {
+  font-size: 14px;
+  font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', Helvetica, Tahoma, Arial, 'Hiragino Sans GB', 'Microsoft YaHei', '微软雅黑', SimSun, '宋体', Heiti, '黑体', sans-serif;
+  color: #393939;
+  font-weight: normal;
+  font-style: normal;
+  text-decoration: none;
+  line-height: 1.75;
+}
+table {
+  overflow: visible;
+  background-color: rgba(255, 255, 255, 0.3);
+  table-layout: auto !important;
+  display: table;
+  box-sizing: border-box;
+  border-collapse: collapse;
+  border-spacing: 0;
+  border: 1px solid #a7a7a7;
+  margin: 3px 0;
+}
+table tr {
+  font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', Helvetica, Tahoma, Arial, 'Hiragino Sans GB', 'Microsoft YaHei', '微软雅黑', SimSun, '宋体', Heiti, '黑体', sans-serif;
+  color: #393939;
+  font-weight: normal;
+  font-style: normal;
+  text-decoration: none;
+  line-height: 1.75;
+  font-size: 14px;
+  padding: 0;
+  word-break: break-all;
+  word-wrap: break-word;
+  border: 1px solid #a7a7a7;
+  vertical-align: middle;
+  line-height: normal;
+}
+table td {
+  overflow: hidden;
+  box-sizing: border-box;
+}
+table td:hover {
+  overflow-x: visible;
+}
+hr[yne-bulb-block="hr"] {
+  width: 100%;
+  height: 1px;
+  margin: 0;
+  border: 0;
+  display: inline-block;
+  background-color: #999999;
+  clear: both;
+}
+.base-catalogue {
+  text-align: left;
+  white-space: pre-wrap;
+  line-height: 1.75;
+  word-break: break-word;
+  border-bottom: 1px dashed #e6e6e6 !important;
+  padding-top: 8px !important;
+  padding-bottom: 8px !important;
+  background: initial;
+}
+.base-catalogue a {
+  text-decoration: none;
+  color: #003884;
+}
+div[yne-bulb-type="catalogue-wrap"] {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 1px solid #f2f2f2;
+  padding: 0 20px;
+  background: rgba(255, 255, 255, 0.7);
+}
+div[yne-bulb-type="catalogue-wrap"] > div {
+  text-align: left;
+  white-space: pre-wrap;
+  line-height: 1.75;
+  word-break: break-word;
+  border-bottom: 1px dashed #e6e6e6 !important;
+  padding-top: 8px !important;
+  padding-bottom: 8px !important;
+  background: initial;
+}
+div[yne-bulb-type="catalogue-wrap"] > div a {
+  text-decoration: none;
+  color: #003884;
+}
+div[yne-bulb-type="catalogue-wrap"] > blockquote {
+  text-align: left;
+  white-space: pre-wrap;
+  line-height: 1.75;
+  word-break: break-word;
+  border-bottom: 1px dashed #e6e6e6 !important;
+  padding-top: 8px !important;
+  padding-bottom: 8px !important;
+  background: initial;
+  margin-left: 0px !important;
+  text-indent: 40px;
+}
+div[yne-bulb-type="catalogue-wrap"] > blockquote a {
+  text-decoration: none;
+  color: #003884;
+}
+div[yne-bulb-type="catalogue-wrap"] :last-child {
+  border-bottom: 0px !important;
+}
+div[yne-bulb-type="catalogue-wrap"] div[yne-bulb-block="catalogue"] {
+  font-size: 14px;
+  font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', Helvetica, Tahoma, Arial, 'Hiragino Sans GB', 'Microsoft YaHei', '微软雅黑', SimSun, '宋体', Heiti, '黑体', sans-serif;
+  color: #393939;
+  font-weight: normal;
+  font-style: normal;
+  text-decoration: none;
+  line-height: 1.75;
+  white-space: pre-wrap;
+  word-break: normal;
+  border-left: 0;
+  border-right: 0;
+  background: initial;
+}
+div[yne-bulb-type="catalogue-wrap"] div[yne-bulb-block="catalogue"] > a {
+  padding: 0;
+  border-bottom: 0;
+  display: initial;
+  background: initial;
+}
+[yne-bulb-block="catalogue"] {
+  border-left: 1px solid #f2f2f2;
+  border-right: 1px solid #f2f2f2;
+  background: rgba(255, 255, 255, 0.7);
+  line-height: 1.75;
+  padding: 0 20px;
+}
+[yne-bulb-block="catalogue"] > a {
+  padding: 8px 0;
+  text-decoration: none;
+  border-bottom: 1px dashed #e6e6e6;
+  display: block;
+  color: #003884;
+  background: initial;
+}
+[yne-bulb-order="first"] {
+  border-top: 1px solid #f2f2f2;
+  margin-top: 20px;
+}
+[yne-bulb-order="last"] {
+  border-bottom: 1px solid #f2f2f2;
+  margin-bottom: 20px;
+}
+[yne-bulb-order="last"] > a {
+  border-bottom: 0px;
+}
+[yne-bulb-order="firstlast"] {
+  border-top: 1px solid #f2f2f2;
+  border-bottom: 1px solid #f2f2f2;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+[yne-bulb-order="firstlast"] > a {
+  border-bottom: 0px;
+}
+.svg-common {
+  background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIHdpZHRoPSIyMjYiIGhlaWdodD0iMTg2IiB2aWV3Qm94PSIwIDAgMjI2IDE4NiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMjQiIHZpZXdCb3g9Ii0yIC0yIDE4IDI0IiBpZD0ic3JjLS1zdmctLWF0dGFjaG1lbnRfZG93bmxvYWQiIHg9IjE3MCIgeT0iNzIiPjx0aXRsZT7kuIvovb3pmYTku7Y8L3RpdGxlPjxwYXRoIGQ9Ik04IDlWMEg2djlIMmw1IDUuODdMMTIgOUg4em0tOCA5aDE0djJIMHYtMnoiIGZpbGw9IiM1NTUiIGZpbGwtcnVsZT0iZXZlbm9kZCIvPjwvc3ZnPjxzdmcgd2lkdGg9IjM0IiBoZWlnaHQ9IjM4IiB2aWV3Qm94PSItMiAtMiAzNCAzOCIgaWQ9InNyYy0tc3ZnLS10eXBlX2F1ZGlvX2xhcmdlIiB4PSIxMzYiIHk9IjExMCI+PHRpdGxlPuivremfs+mAn+iusDMwKjM0PC90aXRsZT48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0wIDJDMCAuODk1Ljg5IDAgMS45OTEgMEgyMmw4IDh2MjQuMDAzQTEuOTk4IDEuOTk4IDAgMCAxIDI4LjAwOCAzNEgxLjk5MkMuODkyIDM0IDAgMzMuMTA4IDAgMzJWMnoiIGZpbGw9IiNCQ0E1RkYiLz48cGF0aCBkPSJNMTYgMjZ2LTIuMDVhOS45OTYgOS45OTYgMCAwIDAgNy42MDItNC44NDdsLTEuNzItMS4wMjJBNy45OTQgNy45OTQgMCAwIDEgMTUgMjJhNy45OTQgNy45OTQgMCAwIDEtNi44NjgtMy44OTVsLTEuNzE2IDEuMDI3QTkuOTk1IDkuOTk1IDAgMCAwIDE0IDIzLjk1VjI2aC0yLjAwM2MtLjU0NCAwLS45OTcuNDQ4LS45OTcgMSAwIC41NTYuNDQ2IDEgLjk5NyAxaDYuMDA2Yy41NDQgMCAuOTk3LS40NDguOTk3LTEgMC0uNTU2LS40NDYtMS0uOTk3LTFIMTZ6bS02LTE1LjAwNWE1LjAwMSA1LjAwMSAwIDAgMSAxMCAwdjQuMDFhNS4wMDEgNS4wMDEgMCAwIDEtMTAgMHYtNC4wMXptMiAwdjQuMDFhMy4wMDEgMy4wMDEgMCAwIDAgNiAwdi00LjAxYTMuMDAxIDMuMDAxIDAgMCAwLTYgMHoiIGZpbGw9IiNGRkYiLz48cGF0aCBkPSJNMSAydjMwYzAgLjU1NS40NDMgMSAuOTkyIDFoMjYuMDE2YS45OTguOTk4IDAgMCAwIC45OTItLjk5N1Y4bC4yOTMuNzA3LTgtOEwyMiAxSDEuOTkxQS45OTQuOTk0IDAgMCAwIDEgMnpNMCAyQzAgLjg5NS44OSAwIDEuOTkxIDBIMjJsOCA4djI0LjAwM0ExLjk5OCAxLjk5OCAwIDAgMSAyOC4wMDggMzRIMS45OTJDLjg5MiAzNCAwIDMzLjEwOCAwIDMyVjJ6IiBmaWxsLW9wYWNpdHk9Ii4wNSIgZmlsbD0iIzAwMCIvPjxwYXRoIGZpbGwtb3BhY2l0eT0iLjEiIGZpbGw9IiMwMDAiIGQ9Ik0yMyA3aDYuMDI0TDMwIDguMDM2VjE0eiIvPjxwYXRoIGQ9Ik0yMiAwbDggOC02LjAwMi4wMDNBMS45OTIgMS45OTIgMCAwIDEgMjIgNi4wMDVWMHoiIGZpbGw9IiNEREQyRkYiLz48L2c+PC9zdmc+PHN2ZyB3aWR0aD0iMzQiIGhlaWdodD0iMzgiIHZpZXdCb3g9Ii0yIC0yIDM0IDM4IiBpZD0ic3JjLS1zdmctLXR5cGVfY29kZV9sYXJnZSIgeD0iMzQiIHk9IjE0OCI+PHRpdGxlPmNvZGUzMDM0PC90aXRsZT48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0wIDJDMCAuODk1Ljg5IDAgMS45OTIgMEgyMi4wMUwzMCA4djI0LjAwM0ExLjk5OCAxLjk5OCAwIDAgMSAyOC4wMDggMzRIMS45OTJDLjg5MiAzNCAwIDMzLjEwOCAwIDMyVjJ6IiBmaWxsPSIjRkZGIi8+PHBhdGggZD0iTTEuOTkyIDBIMjIuMDFMMzAgOHYyNC4wMDNBMS45OTggMS45OTggMCAwIDEgMjguMDA4IDM0SDEuOTkyQy44OTIgMzQgMCAzMy4xMDggMCAzMlYyQzAgLjg5NS44OSAwIDEuOTkyIDB6IiBmaWxsPSIjRkI4QTY2Ii8+PHBhdGggZD0iTTEgMzJjMCAuNTU1LjQ0MyAxIC45OTIgMWgyNi4wMTZhLjk5OC45OTggMCAwIDAgLjk5Mi0uOTk3bC0uMDI2LTIzLjYxN0wyMS42MjQgMUgxLjk5MUEuOTk1Ljk5NSAwIDAgMCAxIDJ2MzB6TTAgMkMwIC44OTUuODkgMCAxLjk5MiAwSDIyLjAxTDMwIDh2MjQuMDAzQTEuOTk4IDEuOTk4IDAgMCAxIDI4LjAwOCAzNEgxLjk5MkMuODkyIDM0IDAgMzMuMTA4IDAgMzJWMnoiIGZpbGwtb3BhY2l0eT0iLjA1IiBmaWxsPSIjMDAwIi8+PHBhdGggZD0iTTIyIDdoN2wxIDF2NmwtOC03eiIgZmlsbC1vcGFjaXR5PSIuMSIgZmlsbD0iIzAwMCIvPjxwYXRoIGQ9Ik0zMCA4aC02LjAwMkExLjk5MyAxLjk5MyAwIDAgMSAyMiA2LjAwMlYwbDggOHoiIGZpbGw9IiNGNUFCOTMiLz48cmVjdCBmaWxsPSIjRkZGIiB0cmFuc2Zvcm09InJvdGF0ZSgzMCAxMiAxNykiIHg9IjExIiB5PSI4IiB3aWR0aD0iMiIgaGVpZ2h0PSIxOCIgcng9IjIiLz48cGF0aCBkPSJNMjEuNjUzIDE3Ljk1NmwtMy4yNiAyLjQ5MmExIDEgMCAwIDAgMS4yMTQgMS41OWw0LjI0My0zLjI0M2ExIDEgMCAwIDAgMC0xLjU5bC00LjI0My0zLjI0MmExIDEgMCAwIDAtMS4yMTQgMS41ODlsMy4yNiAyLjQwNHoiIGZpbGw9IiNGRkYiLz48L2c+PC9zdmc+PHN2ZyB3aWR0aD0iMzQiIGhlaWdodD0iMzgiIHZpZXdCb3g9Ii0yIC0yIDM0IDM4IiBpZD0ic3JjLS1zdmctLXR5cGVfY29tcHJlc3NfbGFyZ2UiIHg9IjEwMiIgeT0iMTQ4Ij48dGl0bGU+emlwPC90aXRsZT48ZGVmcz48cGF0aCBpZD0iZGEiIGQ9Ik0wIDJDMCAuODk1Ljg5IDAgMS45OSAwaDIwLjAwMkwzMCA4djI0LjAwM0ExLjk5OCAxLjk5OCAwIDAgMSAyOC4wMDggMzRIMS45OTJDLjg5MiAzNCAwIDMzLjEwOCAwIDMyVjJ6Ii8+PC9kZWZzPjxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+PHVzZSBmaWxsPSIjRDQ5NjVBIiB4bGluazpocmVmPSIjZGEiLz48cGF0aCBkPSJNMSAzMmMwIC41NTUuNDQzIDEgLjk5MiAxaDI2LjAxNmEuOTk4Ljk5OCAwIDAgMCAuOTkyLS45OTdzLjA4OS0yMy41LS4wMTMtMjMuNjAyQzI2LjQyNSA1LjgzNiAyMS43MzMgMSAyMS41OTUgMUgxLjk5MkEuOTk1Ljk5NSAwIDAgMCAxIDJ2MzB6TTAgMkMwIC44OTUuODkgMCAxLjk5MiAwaDIwLjAxNkwzMCA4djI0LjAwM0ExLjk5OCAxLjk5OCAwIDAgMSAyOC4wMDggMzRIMS45OTJDLjg5MiAzNCAwIDMzLjEwOCAwIDMyVjJ6IiBmaWxsLW9wYWNpdHk9Ii4wNSIgZmlsbD0iIzAwMCIvPjxwYXRoIGQ9Ik0yMyA3bDcgMXY2bC03LTd6IiBmaWxsLW9wYWNpdHk9Ii4xIiBmaWxsPSIjMDAwIi8+PHBhdGggZD0iTTIyIDBsOCA4aC02LjAwMkExLjk5MyAxLjk5MyAwIDAgMSAyMiA2LjAwMlYweiIgZmlsbD0iI0U2QzE5RSIvPjxwYXRoIGQ9Ik0xMyA5aDJ2MmgtMlY5em0yIDJoMnYyaC0ydi0yem0tMiAyaDJ2MmgtMnYtMnptMiAyaDJ2MmgtMnYtMnptLTIgMmgydjJoLTJ2LTJ6bTAgNGgydjRoLTJ2LTR6bTItMmgydjJoLTJ2LTJ6bTAgNGgydjJoLTJ2LTJ6IiBmaWxsPSIjRkZGIi8+PC9nPjwvc3ZnPjxzdmcgd2lkdGg9IjM0IiBoZWlnaHQ9IjM4IiB2aWV3Qm94PSItMiAtMiAzNCAzOCIgaWQ9InNyYy0tc3ZnLS10eXBlX2Nzdl9sYXJnZSIgeD0iMzQiIHk9IjcyIj48dGl0bGU+Y3N2IDMwKjM0PC90aXRsZT48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0wIDJDMCAuODk1Ljg5IDAgMS45OTEgMEgyMmw4IDh2MjQuMDAzQTEuOTk4IDEuOTk4IDAgMCAxIDI4LjAwOCAzNEgxLjk5MkMuODkyIDM0IDAgMzMuMTA4IDAgMzJWMnoiIGZpbGw9IiM1QkNCOEEiLz48cGF0aCBkPSJNMSAydjMwYzAgLjU1NS40NDMgMSAuOTkyIDFoMjYuMDE2YS45OTguOTk4IDAgMCAwIC45OTItLjk5N1Y4bC4yOTMuNzA3LTgtOEwyMiAxSDEuOTkxQS45OTQuOTk0IDAgMCAwIDEgMnpNMCAyQzAgLjg5NS44OSAwIDEuOTkxIDBIMjJsOCA4djI0LjAwM0ExLjk5OCAxLjk5OCAwIDAgMSAyOC4wMDggMzRIMS45OTJDLjg5MiAzNCAwIDMzLjEwOCAwIDMyVjJ6IiBmaWxsLW9wYWNpdHk9Ii4wNSIgZmlsbD0iIzAwMCIvPjxwYXRoIGZpbGwtb3BhY2l0eT0iLjEiIGZpbGw9IiMwMDAiIGQ9Ik0yMyA3aDYuMDI0TDMwIDguMDM2VjE0eiIvPjxwYXRoIGQ9Ik0yMiAwbDggOC02LjAwMi4wMDNBMS45OTIgMS45OTIgMCAwIDEgMjIgNi4wMDVWMHoiIGZpbGw9IiM5QUUyQjgiLz48dGV4dCBmb250LWZhbWlseT0iQXJpYWwtQm9sZE1ULCBBcmlhbCIgZm9udC1zaXplPSIxMyIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiNGRkYiPjx0c3BhbiB4PSI0IiB5PSIyMSI+Y3N2PC90c3Bhbj48L3RleHQ+PC9nPjwvc3ZnPjxzdmcgd2lkdGg9IjM0IiBoZWlnaHQ9IjM4IiB2aWV3Qm94PSItMiAtMiAzNCAzOCIgaWQ9InNyYy0tc3ZnLS10eXBlX2V4Y2VsX2xhcmdlIiB4PSI2OCIgeT0iNzIiPjx0aXRsZT5leGNlbDwvdGl0bGU+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBkPSJNMCAyQzAgLjg5NS44OTIgMCAxLjk5NiAwSDIyLjA2TDMwIDcuOTYyVjMyYTIgMiAwIDAgMS0xLjk5MiAySDEuOTkyQy44OTIgMzQgMCAzMy4xMDggMCAzMlYyeiIgZmlsbD0iIzRFQzc4MSIvPjxwYXRoIGQ9Ik0xIDMyYzAgLjU1NS40NDMgMSAuOTkyIDFoMjYuMDE2YS45OTguOTk4IDAgMCAwIC45OTItLjk5N3MuMDg5LTIzLjUtLjAxMy0yMy42MDJDMjYuNDI1IDUuODM2IDIxLjczMyAxIDIxLjU5NSAxSDEuOTkyQS45OTUuOTk1IDAgMCAwIDEgMnYzMHpNMCAyQzAgLjg5NS44OSAwIDEuOTkyIDBoMjAuMDE2TDMwIDh2MjQuMDAzQTEuOTk4IDEuOTk4IDAgMCAxIDI4LjAwOCAzNEgxLjk5MkMuODkyIDM0IDAgMzMuMTA4IDAgMzJWMnoiIGZpbGwtb3BhY2l0eT0iLjA1IiBmaWxsPSIjMDAwIi8+PHBhdGggZD0iTTIzIDdsNyAxdjZsLTctN3oiIGZpbGwtb3BhY2l0eT0iLjEiIGZpbGw9IiMwMDAiLz48cGF0aCBkPSJNMjIgMGw4IDhoLTYuMDAyQTEuOTkzIDEuOTkzIDAgMCAxIDIyIDYuMDAyVjB6IiBmaWxsPSIjOUFFMkI4Ii8+PHBhdGggZD0iTTE3IDEwbC0yIDMtMi0zSDlsNCA2LTUgOGg3di0yaC0ybDItMyAyIDVoNGwtNC04IDQtNmgtNHoiIGZpbGw9IiNGRkYiLz48L2c+PC9zdmc+PHN2ZyB3aWR0aD0iMzQiIGhlaWdodD0iMzgiIHZpZXdCb3g9Ii0yIC0yIDM0IDM4IiBpZD0ic3JjLS1zdmctLXR5cGVfZmxhc2hfbGFyZ2UiIHg9IjEwMiIgeT0iNzIiPjx0aXRsZT5mbGFzaDwvdGl0bGU+PGRlZnM+PHBhdGggaWQ9ImdhIiBkPSJNMCAyQzAgLjg5NS44OSAwIDEuOTkyIDBoMjAuMDIxTDMwIDcuOTYyVjMyYTIgMiAwIDAgMS0xLjk5MiAySDEuOTkyQy44OTIgMzQgMCAzMy4xMDggMCAzMlYyeiIvPjwvZGVmcz48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjx1c2UgZmlsbD0iI0ZBNUQ1RCIgeGxpbms6aHJlZj0iI2dhIi8+PHBhdGggZD0iTTEgMzJjMCAuNTU1LjQ0MyAxIC45OTIgMWgyNi4wMTZhLjk5OC45OTggMCAwIDAgLjk5Mi0uOTk3cy4wODktMjMuNS0uMDEzLTIzLjYwMkMyNi40MjUgNS44MzYgMjEuNzMzIDEgMjEuNTk1IDFIMS45OTJBLjk5NS45OTUgMCAwIDAgMSAydjMwek0wIDJDMCAuODk1Ljg5IDAgMS45OTIgMGgyMC4wMTZMMzAgOHYyNC4wMDNBMS45OTggMS45OTggMCAwIDEgMjguMDA4IDM0SDEuOTkyQy44OTIgMzQgMCAzMy4xMDggMCAzMlYyeiIgZmlsbC1vcGFjaXR5PSIuMDUiIGZpbGw9IiMwMDAiLz48cGF0aCBkPSJNMjMgN2w3IDF2NmwtNy03eiIgZmlsbC1vcGFjaXR5PSIuMSIgZmlsbD0iIzAwMCIvPjxwYXRoIGQ9Ik0yMiAwbDggOGgtNi4wMDJBMS45OTMgMS45OTMgMCAwIDEgMjIgNi4wMDJWMHoiIGZpbGw9IiNGRkE3QTciLz48cGF0aCBkPSJNOC4xOSAyMi40NVYyNWM0LjktLjMyNiA3LjAyLTIuMzc2IDcuOTItNi4wOTFoNC4wMjh2LTIuNTRIMTYuNTVjLjYzNi00LjE2IDQuNDUtNC43NSA0LjQ1LTQuODJWOWMtMS4xNjUuMDgyLTYuMzg3IDEuNjYzLTcuMDM1IDcuMzUzLS42MjMgNS40NTYtMy40NDYgNS45NTktNS43NzUgNi4wOTh6IiBmaWxsPSIjRkZGIi8+PC9nPjwvc3ZnPjxzdmcgd2lkdGg9IjM0IiBoZWlnaHQ9IjI4IiB2aWV3Qm94PSItMiAtMiAzNCAyOCIgaWQ9InNyYy0tc3ZnLS10eXBlX2ZvbGRlcl9sYXJnZSIgeD0iMTkyIiB5PSIxNTIiPjx0aXRsZT7orqjorrrljLrmlofku7blpLk8L3RpdGxlPjxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+PHBhdGggZD0iTTAgMWMwLS41NTIuNDQtMSAxLjAwMS0xaDguMjQ0Yy41NTMgMCAxLjMyMS4zMTQgMS43MS42OTRsMS43NCAxLjcwNmgxNi4zYy41NTUgMCAxLjAwNS40NTEgMS4wMDUuOTk4djE5LjYwNGEuOTk5Ljk5OSAwIDAgMS0uOTk4Ljk5OEguOTk4QTEgMSAwIDAgMSAwIDIzVjF6IiBmaWxsPSIjRjdDRjU4Ii8+PHBhdGggZD0iTTEgLjk1NnYyMi4wODhjMC0uMDA3LjAwMy0uMDA0LS4wMDItLjAwNGgyOC4wMDRzLS4wMDIuMDAxLS4wMDIuMDA0VjMuMzU2YzAgLjAwNi0uMDAyLjAwNC0uMDA1LjAwNEgxMi4yNzVsLS4yOTMtLjI4OC0xLjc1NS0xLjcxOWMtLjE5LS4xODYtLjcwMi0uMzkzLS45ODItLjM5M0gxQy45OTUuOTYgMSAuOTU1IDEgLjk1NnptLTEgMEMwIC40MjguNDQgMCAxLjAwMSAwaDguMjQ0Yy41NTMgMCAxLjMyMS4zMTQgMS42OTYuNjgxTDEyLjY5NiAyLjRoMTYuMjk5Yy41NTUgMCAxLjAwNS40MzEgMS4wMDUuOTU2djE5LjY4OGMwIC41MjgtLjQ0Ny45NTYtLjk5OC45NTZILjk5OEMuNDQ3IDI0IDAgMjMuNTYzIDAgMjMuMDQ0Vi45NTZ6IiBmaWxsPSIjRTNBNDI3Ii8+PHBhdGggZmlsbD0iI0ZGRiIgZD0iTTMgMmgxMXY1SDN6Ii8+PHBhdGggZD0iTTAgNS45OTVDMCA1LjQ0NS40NCA1IDEgNWg4LjI0Yy41NTMgMCAxLjI0NC0uMzY4IDEuNTUyLS44MzZMMTIuMjIgMmgxNi43NzRBLjk5OS45OTkgMCAwIDEgMzAgMy4wMDJ2MTkuOTk2QTEgMSAwIDAgMSAyOS4wMDIgMjRILjk5OEExIDEgMCAwIDEgMCAyMy4wMDVWNS45OTV6IiBmaWxsPSIjRjdENTdCIi8+PHBhdGggZD0iTTEgMjMuMDNjMC0uMDExIDI4LjAwMi0uMDA4IDI4LjAwMi0uMDA4TDI5IDIuOTc0YzAgLjAwNi0xNS45NDQgMC0xNS45NDQgMGwtMS4yNiAxLjgwNmMtLjU2Ni41NjUtMS43MTcgMS4yMDctMi41MzQgMS4yMDdIMWMtLjAwNyAwIDAgMTcuMDQzIDAgMTcuMDQzek0uOTk4IDUuMDJoOC4zMTNjLjU1MyAwIDEuNDQtLjg1OCAxLjgxNS0xLjIzMkwxMi42OTYgMmgxNi4yOTlDMjkuNTUgMiAzMCAyLjQ0IDMwIDIuOTc0djIwLjA1MmEuOTg2Ljk4NiAwIDAgMS0uOTk4Ljk3NEguOTk4Qy40NDcgMjQgMCAyMy41NTUgMCAyMy4wM1Y1LjQxNGMwLS41MzUuNDM3LS4zOTUuOTk4LS4zOTV6IiBmaWxsPSIjRTNBNDI3Ii8+PC9nPjwvc3ZnPjxzdmcgd2lkdGg9IjM0IiBoZWlnaHQ9IjM4IiB2aWV3Qm94PSItMiAtMiAzNCAzOCIgaWQ9InNyYy0tc3ZnLS10eXBlX2h0bWxfbGFyZ2UiIHk9IjExMCI+PHRpdGxlPklFPC90aXRsZT48ZGVmcz48cGF0aCBpZD0iaWEiIGQ9Ik0wIDJDMCAuODk1Ljg5IDAgMS45OTQgMGgyMC4wMzdMMzAgNy45NjJWMzJhMiAyIDAgMCAxLTEuOTkyIDJIMS45OTJDLjg5MiAzNCAwIDMzLjEwOCAwIDMyVjJ6Ii8+PC9kZWZzPjxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+PHVzZSBmaWxsPSIjNjVBNkYzIiB4bGluazpocmVmPSIjaWEiLz48cGF0aCBkPSJNMSAzMmMwIC41NTUuNDQzIDEgLjk5MiAxaDI2LjAxNmEuOTk4Ljk5OCAwIDAgMCAuOTkyLS45OTdzLjA4OS0yMy41LS4wMTMtMjMuNjAyQzI2LjQyNSA1LjgzNiAyMS43MzMgMSAyMS41OTUgMUgxLjk5MkEuOTk1Ljk5NSAwIDAgMCAxIDJ2MzB6TTAgMkMwIC44OTUuODkgMCAxLjk5MiAwaDIwLjAxNkwzMCA4djI0LjAwM0ExLjk5OCAxLjk5OCAwIDAgMSAyOC4wMDggMzRIMS45OTJDLjg5MiAzNCAwIDMzLjEwOCAwIDMyVjJ6IiBmaWxsLW9wYWNpdHk9Ii4wNSIgZmlsbD0iIzAwMCIvPjxwYXRoIGQ9Ik0yMyA3bDcgMXY2bC03LTd6IiBmaWxsLW9wYWNpdHk9Ii4xIiBmaWxsPSIjMDAwIi8+PHBhdGggZD0iTTIyIDBsOCA4aC02LjAwMkExLjk5MyAxLjk5MyAwIDAgMSAyMiA2LjAwMlYweiIgZmlsbD0iI0EzQ0JGQSIvPjxwYXRoIGQ9Ik0yMS4wODEgOS43NTVjLS42NzEtLjYyMS0xLjUyNy0uNjgtMi4yOTctLjY4NC0uODIxLjAzMi0xLjY1MS4yMi0yLjM2LjUyNmE3LjA1IDcuMDUgMCAwIDAtMS4xODguNTRjLS4wOTUuMDQ5LS4xOC4xMjktLjI2OC4yYTcuNzI4IDcuNzI4IDAgMCAwLS41ODYtLjAyN2MtLjg0OSAwLTEuNjUzLjE1Ny0yLjQxMi40NjdhNi4wMjIgNi4wMjIgMCAwIDAtMiAxLjMzIDYuMjk2IDYuMjk2IDAgMCAwLTEuMzUgMi4wMjggNi40NzMgNi40NzMgMCAwIDAtLjQ5MSAyLjU0YzAgLjEzLjAyMy4yNDEuMDI4LjM2OC0uNDk5LjgtLjg3IDEuNTc1LTEuMTE1IDIuMzMtLjM2MiAxLjEyLS41MiAyLjAyLS40OTYgMi44My4wMzQgMS4xOTcuMzE2IDIuMDg2Ljg2NyAyLjcyLjUwMS41NjcgMS4xNjMuODU0IDEuOTY0Ljg1NC4xNCAwIC4yNzUtLjAwOC40LS4wMjMuNjI4LS4wNyAxLjExMi0uMjQgMS41MzItLjQuNzY5LS4zMiAxLjE2MS0uNjA0IDEuMjAzLS42MzZsLS40ODgtLjk4Yy0uMDA0LjAwMi0uNDAyLjE0Ny0xLjA5NS4yODItLjQ1NS4wOTItLjc5My4xMjYtMS4yLjA5Ny0uNC0uMDI1LS43NjMtLjE4NC0uOTA1LS4zOTktLjIwMS0uMy0uMjg4LS44MDMtLjI2LTEuNDkuMDMzLS41Ny4xODYtMS4yMi40NTItMS45Ni4yNC40MDkuNTE1Ljc5MS44NTUgMS4xMjUgMS4xNiAxLjE0MyAyLjY5NCAxLjcxMyA0LjYgMS43MTMgMS4zODUgMCAyLjYxLS4zMzYgMy42NzQtMS4wMTIgMS4wNjQtLjY3NiAxLjc2LTEuNzk3IDIuMDg4LTMuMTE4aC0zLjU1MWMtLjE3OS40Mi0uNDY1Ljg2OC0uODYgMS4xMDItLjM5NC4yMzItLjgzLjM1LTEuMzA2LjM1LS43OSAwLTEuNDExLS4yNDktMS44NjQtLjc0OC0uNDU1LS40OTUtLjY5Ny0xLjE2NC0uNzI3LTIuMDAzaDguNTMyYzAtLjk3Ny0uMTMyLTIuMzcyLS4zOTItMy4yMDRhNi40OTUgNi40OTUgMCAwIDAtMS4xNi0yLjE5Yy0uMzE4LS4zOS0uNzAxLS43MDUtMS4xMTUtLjk4NGwuMjU4LS4wODZjLjIwOS0uMDkxLjQ2Ni0uMTQuNzE0LS4xODhsLjEyLS4wMjVjLjE3Ny0uMDIyLjM1LS4wMzYuNTEyLS4wMzYuMzcxIDAgLjUzOC4wNzUuNTk1LjExMi4yNDcuMTc0LjQyNS40OTYuNDcuNzA4LjEyMi42NjguMDk0IDEuMDg2LjA5MyAxLjA5bDEuMDQ2LjE5Ni4xMDMtLjQyOWMuMDQzLS4yMjYuMTA2LS41NjkuMDktMS4wMzQtLjAyOC0uNDQtLjA3OC0xLjE3OC0uNzEtMS44NTJ6bS05LjE1NiA1LjY1NmMuMTItLjc0Ni4zOTUtMS4yOTMuODI2LTEuNzQ0LjQzMi0uNDQ5Ljk3Ni0uNjc1IDEuNjMxLS42NzUuNjI1IDAgMS4xNS4yMzcgMS41NzQuNzEuNDI0LjQ3NC42NTEgMS4wMS42OCAxLjcwOWgtNC43MXoiIGZpbGw9IiNGRkYiLz48L2c+PC9zdmc+PHN2ZyB3aWR0aD0iMzQiIGhlaWdodD0iMzgiIHZpZXdCb3g9Ii0yIC0yIDM0IDM4IiBpZD0ic3JjLS1zdmctLXR5cGVfaW1hZ2VfbGFyZ2UiIHg9IjM0IiB5PSIxMTAiPjx0aXRsZT5waWM8L3RpdGxlPjxkZWZzPjxwYXRoIGlkPSJqYSIgZD0iTTAgMkMwIC44OTUuODkyIDAgMS45OTcgMGgyMC4wNjVMMzAgNy45NjJWMzJhMiAyIDAgMCAxLTEuOTkyIDJIMS45OTJDLjg5MiAzNCAwIDMzLjEwOCAwIDMyVjJ6Ii8+PC9kZWZzPjxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+PHVzZSBzdHJva2Utb3BhY2l0eT0iLjA1IiBzdHJva2U9IiMwMDAiIGZpbGw9IiM2N0NDQkEiIHhsaW5rOmhyZWY9IiNqYSIvPjxwYXRoIGQ9Ik0xIDMyYzAgLjU1NS40NDMgMSAuOTkyIDFoMjYuMDE2YS45OTguOTk4IDAgMCAwIC45OTItLjk5N3MuMDg5LTIzLjUtLjAxMy0yMy42MDJDMjYuNDI1IDUuODM2IDIxLjczMyAxIDIxLjU5NSAxSDEuOTkyQS45OTUuOTk1IDAgMCAwIDEgMnYzMHpNMCAyQzAgLjg5NS44OSAwIDEuOTkyIDBoMjAuMDE2TDMwIDh2MjQuMDAzQTEuOTk4IDEuOTk4IDAgMCAxIDI4LjAwOCAzNEgxLjk5MkMuODkyIDM0IDAgMzMuMTA4IDAgMzJWMnoiIGZpbGwtb3BhY2l0eT0iLjA1IiBmaWxsPSIjMDAwIi8+PHBhdGggZD0iTTIzIDdsNyAxdjdsLTctOHoiIGZpbGwtb3BhY2l0eT0iLjEiIGZpbGw9IiMwMDAiLz48cGF0aCBkPSJNMjIgMGw4IDguMDA4aC02LjAwMmExLjk5NCAxLjk5NCAwIDAgMS0xLjk5OC0yVjB6IiBmaWxsPSIjQThFMEQ2Ii8+PHBhdGggZD0iTTEwLjAzIDEzLjk3NWMxLjExNiAwIDIuMDItLjkgMi4wMi0yLjAxIDAtMS4xMS0uOTA0LTIuMDEtMi4wMi0yLjAxcy0yLjAyLjktMi4wMiAyLjAxYzAgMS4xMS45MDQgMi4wMSAyLjAyIDIuMDFtMi42NjQgNy41MmwtMS43NjctMi40NThjLS42NDUtLjg5Ni0xLjY4Ny0uODk1LTIuMzMgMEw2LjMwOCAyMi4yMmMtLjY0NS44OTYtLjI0OCAxLjc4MS44ODQgMS43ODFoNS4xMzdjLjEzOSAwIC4yNjctLjAxLjM4My0uMDMyLjExNi4wMjEuMjQzLjAzMi4zODIuMDMyaDkuNzA3YzEuMTI1IDAgMS41MzUtLjg5NS44OTYtMS44bC00LjU5NC02LjUyMWMtLjYzNy0uOTA0LTEuNjczLS45MDYtMi4zMTIgMGwtNC4wOTggNS44MTYiIGZpbGw9IiNGRkYiLz48L2c+PC9zdmc+PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNzIiIHZpZXdCb3g9Ii0yIC0yIDY0IDcyIiBpZD0ic3JjLS1zdmctLXR5cGVfa2V5X2xhcmdlIj48dGl0bGU+a2V5bm90ZTwvdGl0bGU+PGRlZnM+PHBhdGggZD0iTTAgMS45OThBMiAyIDAgMCAxIDEuOTk3IDBINDJsMTggMTcuOTI1djQ4LjA4MUExLjk5NiAxLjk5NiAwIDAgMSA1OC4wMDQgNjhIMS45OTZBMS45OTkgMS45OTkgMCAwIDEgMCA2Ni4wMDJWMS45OTh6IiBpZD0ia2EiLz48L2RlZnM+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48dXNlIGZpbGw9IiMzQkIzRkEiIHhsaW5rOmhyZWY9IiNrYSIvPjxwYXRoIGQ9Ik0xIDY2LjAwMmMwIC41NS40NDcuOTk4Ljk5Ni45OThoNTYuMDA4Yy41NSAwIC45OTYtLjQ0Ni45OTYtLjk5NFYxOEw0MiAxSDEuOTk3QS45OTUuOTk1IDAgMCAwIDEgMS45OTh2NjQuMDA0ek0xLjk5NyAwSDQybDE4IDE3LjkyNXY0OC4wODFBMS45OTYgMS45OTYgMCAwIDEgNTguMDA0IDY4SDEuOTk2QTEuOTk5IDEuOTk5IDAgMCAxIDAgNjYuMDAyVjEuOTk4QzAgLjg5NS44OSAwIDEuOTk3IDB6IiBmaWxsLW9wYWNpdHk9Ii4wNSIgZmlsbD0iIzAwMCIvPjxwYXRoIGZpbGwtb3BhY2l0eT0iLjEiIGZpbGw9IiMwMDAiIGQ9Ik02MCAzNGwtLjAxNy0xNkg0NHoiLz48cGF0aCBkPSJNNDIgMGwxOCAxOEg0My45OTVBMS45OTUgMS45OTUgMCAwIDEgNDIgMTYuMDA1VjB6IiBmaWxsPSIjQjdFM0ZDIi8+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTUgMjEpIj48cGF0aCBkPSJNMS44NzUgMWMuMDY5LS41NTIuNTc2LTEgMS4xMjgtMWgyMy45OTRjLjU1NCAwIDEuMDU5LjQ0NSAxLjEyOCAxbDEuNzUgMTRjLjA2OS41NTItLjMyMiAxLS44NzMgMUguOTk4Yy0uNTUxIDAtLjk0Mi0uNDQ1LS44NzMtMWwxLjc1LTE0eiIgZmlsbD0iI0ZGRiIvPjxwYXRoIGZpbGw9IiM0NUI3RkEiIGQ9Ik02Ljk3NCAzLjA5MmgxNS42bDEuMiA5aC0xOHoiLz48cGF0aCBmaWxsPSIjRkZGIiBkPSJNMTMgMThoNHYxMGgtNHoiLz48cGF0aCBmaWxsPSIjRkZGIiBkPSJNMSAyNmgyOXYySDF6Ii8+PC9nPjwvZz48L3N2Zz48c3ZnIHdpZHRoPSIzNCIgaGVpZ2h0PSIzOCIgdmlld0JveD0iLTIgLTIgMzQgMzgiIGlkPSJzcmMtLXN2Zy0tdHlwZV9tZF9sYXJnZSIgeD0iMTAyIiB5PSIxMTAiPjx0aXRsZT5tYXJrMzAqMzQ8L3RpdGxlPjxkZWZzPjxwYXRoIGQ9Ik0wIDJDMCAuODk1Ljg5IDAgMS45OTIgMEgyMi4wMUwzMCA4djI0LjAwM0ExLjk5OCAxLjk5OCAwIDAgMSAyOC4wMDggMzRIMS45OTJDLjg5MiAzNCAwIDMzLjEwOCAwIDMyVjJ6IiBpZD0ibGEiLz48L2RlZnM+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48dXNlIGZpbGw9IiNGNzhBMDkiIHhsaW5rOmhyZWY9IiNsYSIvPjxwYXRoIGZpbGw9IiNGRkYiIGQ9Ik0yMCAxMGwtNSA1LjQ4M0wxMCAxMEg3djE0aDNWMTMuNzZMMTMuNzQzIDE4aDIuNTQ2TDIwIDEzLjc2VjI0aDNWMTB6Ii8+PHBhdGggZD0iTTEgMnYzMGMwIC41NTUuNDQzIDEgLjk5MiAxaDI2LjAxNmEuOTk4Ljk5OCAwIDAgMCAuOTkyLS45OTdWOGwuMjkyLjcwNy03Ljk5LThMMjIuMDEgMUgxLjk5MkEuOTk1Ljk5NSAwIDAgMCAxIDJ6TTAgMkMwIC44OTUuODkgMCAxLjk5MiAwSDIyLjAxTDMwIDh2MjQuMDAzQTEuOTk4IDEuOTk4IDAgMCAxIDI4LjAwOCAzNEgxLjk5MkMuODkyIDM0IDAgMzMuMTA4IDAgMzJWMnoiIGZpbGwtb3BhY2l0eT0iLjA1IiBmaWxsPSIjMDAwIi8+PHBhdGggZmlsbC1vcGFjaXR5PSIuMSIgZmlsbD0iIzAwMCIgZD0iTTMwIDE0bC04LTdoOHoiLz48cGF0aCBkPSJNMjIgMGw4IDhoLTYuMDAyQTEuOTkzIDEuOTkzIDAgMCAxIDIyIDYuMDAyVjB6IiBmaWxsPSIjRkZCRjgxIi8+PC9nPjwvc3ZnPjxzdmcgd2lkdGg9IjM0IiBoZWlnaHQ9IjM4IiB2aWV3Qm94PSItMiAtMiAzNCAzOCIgaWQ9InNyYy0tc3ZnLS10eXBlX211c2ljX2xhcmdlIiB5PSI3MiI+PHRpdGxlPm11c2ljPC90aXRsZT48ZGVmcz48cGF0aCBpZD0ibWEiIGQ9Ik0wIDJDMCAuODk1Ljg5MyAwIDEuOTk4IDBIMjIuMDhMMzAgNy45NjJWMzJhMiAyIDAgMCAxLTEuOTkyIDJIMS45OTJDLjg5MiAzNCAwIDMzLjEwOCAwIDMyVjJ6Ii8+PC9kZWZzPjxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+PHVzZSBmaWxsPSIjRjI4RjY2IiB4bGluazpocmVmPSIjbWEiLz48cGF0aCBkPSJNMSAzMmMwIC41NTUuNDQzIDEgLjk5MiAxaDI2LjAxNmEuOTk4Ljk5OCAwIDAgMCAuOTkyLS45OTdzLjA4OS0yMy41LS4wMTMtMjMuNjAyQzI2LjQyNSA1LjgzNiAyMS43MzMgMSAyMS41OTUgMUgxLjk5MkEuOTk1Ljk5NSAwIDAgMCAxIDJ2MzB6TTAgMkMwIC44OTUuODkgMCAxLjk5MiAwaDIwLjAxNkwzMCA4djI0LjAwM0ExLjk5OCAxLjk5OCAwIDAgMSAyOC4wMDggMzRIMS45OTJDLjg5MiAzNCAwIDMzLjEwOCAwIDMyVjJ6IiBmaWxsLW9wYWNpdHk9Ii4wNSIgZmlsbD0iIzAwMCIvPjxwYXRoIGQ9Ik0yMyA3bDcgMXY2bC03LTd6IiBmaWxsLW9wYWNpdHk9Ii4xIiBmaWxsPSIjMDAwIi8+PHBhdGggZD0iTTIyIDBsOCA4aC02LjAwMkExLjk5MyAxLjk5MyAwIDAgMSAyMiA2LjAwMlYweiIgZmlsbD0iI0ZEQjI5MyIvPjxwYXRoIGQ9Ik05Ljk4MiAxMC44MzZjLS41NDIuMDktLjk4Mi42MS0uOTgyIDEuMTYyVjIwYy0xLjA4Mi4yNTgtMiAxLjIxMi0yIDIuMzg5YTIuMjM3IDIuMjM3IDAgMCAwIDIuMjQyIDIuMjMgMi4yMzEgMi4yMzEgMCAwIDAgMi4yMjgtMi4wNzdsLjAxNC0uMTM2Yy4wMDEtLjAyNi0uMDE1LTkuMDk1LS4wMTUtOS4wOTVsNy4zMDMtMS4xNzd2NS4wNzVjLS4wMTYgMC0uMDMtLjAwNC0uMDQ3LS4wMDRhMi4yMzcgMi4yMzcgMCAwIDAtMi4yNDMgMi4yMzEgMi4yMzcgMi4yMzcgMCAwIDAgMi4yNDMgMi4yMzFjMS4yIDAgMi4xNy0uOTM4IDIuMjc1LTEuNjY3VjkuOTk2YzAtLjU1LS40NDEtLjkyMi0uOTgyLS44MzJMOS45ODIgMTAuODM2eiIgZmlsbD0iI0ZGRiIvPjwvZz48L3N2Zz48c3ZnIHdpZHRoPSIzNCIgaGVpZ2h0PSIzOCIgdmlld0JveD0iLTIgLTIgMzQgMzgiIGlkPSJzcmMtLXN2Zy0tdHlwZV9ub3RlX2xhcmdlIiB5PSIxNDgiPjx0aXRsZT5ub3RlPC90aXRsZT48ZGVmcz48cGF0aCBpZD0ibmEiIGQ9Ik0wIDJDMCAuODk1Ljg5IDAgMS45OTIgMGgyMC4wMTlMMzAgNy45NjJWMzJhMiAyIDAgMCAxLTEuOTkyIDJIMS45OTJDLjg5MiAzNCAwIDMzLjEwOCAwIDMyVjJ6Ii8+PC9kZWZzPjxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+PHVzZSBmaWxsPSIjNUM5REY0IiB4bGluazpocmVmPSIjbmEiLz48cGF0aCBkPSJNMSAzMmMwIC41NTUuNDQzIDEgLjk5MiAxaDI2LjAxNmEuOTk4Ljk5OCAwIDAgMCAuOTkyLS45OTdzLjA4OS0yMy41LS4wMTMtMjMuNjAyQzI2LjQyNSA1LjgzNiAyMS43MzMgMSAyMS41OTUgMUgxLjk5MkEuOTk1Ljk5NSAwIDAgMCAxIDJ2MzB6TTAgMkMwIC44OTUuODkgMCAxLjk5MiAwaDIwLjAxNkwzMCA4djI0LjAwM0ExLjk5OCAxLjk5OCAwIDAgMSAyOC4wMDggMzRIMS45OTJDLjg5MiAzNCAwIDMzLjEwOCAwIDMyVjJ6IiBmaWxsLW9wYWNpdHk9Ii4wNSIgZmlsbD0iIzAwMCIvPjxwYXRoIGQ9Ik0yMyA3bDcgMXY2bC03LTd6IiBmaWxsLW9wYWNpdHk9Ii4xIiBmaWxsPSIjMDAwIi8+PHBhdGggZD0iTTIyIDBsOCA4aC02LjAwMkExLjk5MyAxLjk5MyAwIDAgMSAyMiA2LjAwMlYweiIgZmlsbD0iIzlEQ0RGRiIvPjxwYXRoIGQ9Ik0yMi4xMzEgMTUuNDZsLTUuMDYyLTUuMDdjLS4zODMtLjM4NC0uODY4LS4zODQtMS4yNTEgMGwtNi4zOSA2LjQwMmMtLjI5OC4yNi0uNDg3LjY0Mi0uNDg3IDEuMDY5bC0uNDAxIDUuMDU1YzAgLjc4My4yMzEgMS4wMTUgMS4wMTIgMS4wMTVsNS4xODgtLjQwMmMuMTc0IDAgLjM0LS4wMzIuNDk0LS4wOWEuOTc0Ljk3NCAwIDAgMCAuNDM3LS4yNTJsNi40Ni02LjQ3M2MuMzgzLS4zODQuMzgzLS44NyAwLTEuMjU0IiBmaWxsPSIjRkZGIi8+PHBhdGggZD0iTTE5LjU5MyAxMi45MTdMOC43NzcgMjMuNzMzbC0uMDU3LS4wNmMuMTUxLjE4NS40MTIuMjUyLjgzMi4yNTJsNS4xODgtLjQwM2MuMTc0IDAgLjM0LS4wMzEuNDk0LS4wODlhLjk3Mi45NzIgMCAwIDAgLjQzNy0uMjUzbDYuNDYtNi40NzJjLjE5LS4xOTEuMjg2LS40MDguMjg3LS42MjQgMC0uMjE3LS4wOTYtLjQzMy0uMjg3LS42MjRsLTIuNTM4LTIuNTQzIiBmaWxsPSIjRDlFQ0ZGIi8+PC9nPjwvc3ZnPjxzdmcgd2lkdGg9IjY0IiBoZWlnaHQ9IjcyIiB2aWV3Qm94PSItMiAtMiA2NCA3MiIgaWQ9InNyYy0tc3ZnLS10eXBlX251bWJlcnNfbGFyZ2UiIHg9IjY0Ij48dGl0bGU+bnVtYmVyczwvdGl0bGU+PGRlZnM+PHBhdGggZD0iTTAgMS45OThBMiAyIDAgMCAxIDEuOTk3IDBINDJsMTggMTcuOTI1djQ4LjA4MUExLjk5NiAxLjk5NiAwIDAgMSA1OC4wMDQgNjhIMS45OTZBMS45OTkgMS45OTkgMCAwIDEgMCA2Ni4wMDJWMS45OTh6IiBpZD0ib2EiLz48L2RlZnM+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48dXNlIGZpbGw9IiM2NURCODgiIHhsaW5rOmhyZWY9IiNvYSIvPjxwYXRoIGQ9Ik0xIDY2LjAwMmMwIC41NS40NDcuOTk4Ljk5Ni45OThoNTYuMDA4Yy41NSAwIC45OTYtLjQ0Ni45OTYtLjk5NFYxOEw0MiAxSDEuOTk3QS45OTUuOTk1IDAgMCAwIDEgMS45OTh2NjQuMDA0ek0xLjk5NyAwSDQybDE4IDE3LjkyNXY0OC4wODFBMS45OTYgMS45OTYgMCAwIDEgNTguMDA0IDY4SDEuOTk2QTEuOTk5IDEuOTk5IDAgMCAxIDAgNjYuMDAyVjEuOTk4QzAgLjg5NS44OSAwIDEuOTk3IDB6IiBmaWxsLW9wYWNpdHk9Ii4wNSIgZmlsbD0iIzAwMCIvPjxwYXRoIGZpbGwtb3BhY2l0eT0iLjEiIGZpbGw9IiMwMDAiIGQ9Ik02MCAzNGwtLjAxNy0xNkg0NHoiLz48cGF0aCBkPSJNNDIgMGwxOCAxOEg0My45OTVBMS45OTUgMS45OTUgMCAwIDEgNDIgMTYuMDA1VjB6IiBmaWxsPSIjQThGQUMwIi8+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTYgMjEpIiBmaWxsPSIjRkZGIj48cGF0aCBkPSJNMiAxNGg0djEwSDJ6TTkgOGg0djE2SDl6TTIzIDVoNHYxOWgtNHpNMTYgMGg0djI0aC00ek0wIDI2aDI5djJIMHoiLz48L2c+PC9nPjwvc3ZnPjxzdmcgd2lkdGg9IjM0IiBoZWlnaHQ9IjM4IiB2aWV3Qm94PSItMiAtMiAzNCAzOCIgaWQ9InNyYy0tc3ZnLS10eXBlX290aGVyX2xhcmdlIiB4PSI2OCIgeT0iMTQ4Ij48dGl0bGU+77yfPC90aXRsZT48ZGVmcz48cGF0aCBpZD0icGEiIGQ9Ik0wIDJDMCAuODk1Ljg5IDAgMS45OTIgMEgyMi4wMUwzMCA4djI0LjAwM0ExLjk5OCAxLjk5OCAwIDAgMSAyOC4wMDggMzRIMS45OTJDLjg5MiAzNCAwIDMzLjEwOCAwIDMyVjJ6Ii8+PC9kZWZzPjxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+PHVzZSBzdHJva2Utb3BhY2l0eT0iLjA1IiBzdHJva2U9IiMwMDAiIGZpbGw9IiNCNUJCQkUiIHhsaW5rOmhyZWY9IiNwYSIvPjxwYXRoIGQ9Ik0xIDMyYzAgLjU1NS40NDMgMSAuOTkyIDFoMjYuMDE2YS45OTguOTk4IDAgMCAwIC45OTItLjk5N3MuMDg5LTIzLjUtLjAxMy0yMy42MDJDMjYuNDI1IDUuODM2IDIxLjczMyAxIDIxLjU5NSAxSDEuOTkyQS45OTUuOTk1IDAgMCAwIDEgMnYzMHptLjk5Mi0zMmgyMC4wMTZMMzAgOHYyNC4wMDNBMS45OTggMS45OTggMCAwIDEgMjguMDA4IDM0SDEuOTkyQy44OTIgMzQgMCAzMy4xMDggMCAzMlYyQzAgLjg5NS44OSAwIDEuOTkyIDB6IiBmaWxsLW9wYWNpdHk9Ii4wNSIgZmlsbD0iIzAwMCIvPjxwYXRoIGQ9Ik0yMyA3bDcgMXY2bC03LTd6IiBmaWxsLW9wYWNpdHk9Ii4xIiBmaWxsPSIjMDAwIi8+PHBhdGggZD0iTTIyIDBsOCA4aC02LjAwMkExLjk5MyAxLjk5MyAwIDAgMSAyMiA2LjAwMlYweiIgZmlsbD0iI0UzRTVFNSIvPjxwYXRoIGQ9Ik0xNS41MjcgMjVoLTEuMDU0Yy0uMjYgMC0uNDczLS4xOTctLjQ3My0uNDQydi0xLjExNmMwLS4yNDQuMjEyLS40NDIuNDczLS40NDJoMS4wNTRjLjI2IDAgLjQ3My4xOTguNDczLjQ0MnYxLjExNmMwIC4yNDUtLjIxMi40NDItLjQ3My40NDJ6bS01LjUyNS0xMS41MzVjLjA1OC0uNzE0LjE3Ny0xLjM2NC4zNTYtMS43ODIuMjMtLjUzOC41OTktMS4wMiAxLjEwNi0xLjQ0NGE1LjA0MSA1LjA0MSAwIDAgMSAxLjY5My0uOTM4QTYuMzQ4IDYuMzQ4IDAgMCAxIDE1LjEyNyA5YzEuMzk4IDAgMi41NjMuMzg0IDMuNDkxIDEuMTU0LjkzLjc2OCAxLjM5NiAxLjc5MiAxLjM5NiAzLjA3MiAwIC41NzQtLjEyIDEuMDk1LS4zNTkgMS41NjItLjIzOC40NjgtLjc0NSAxLjA1LTEuNTIgMS43NDYtLjc3Ni42OTgtMS4yOTEgMS4xOTQtMS41NDMgMS40OWEyLjk1NCAyLjk1NCAwIDAgMC0uNTc4IDEuMDU1Yy0uMDkyLjI4OS4wMiAxLjg3NiAwIDIuMzA2LS4wMTQuMzE4LS4zMDIuNTctLjY0My41N2gtLjcyNmMtLjM3NSAwLS42NjUtLjMwMS0uNjQ2LS42NTEuMDI4LS41MDktLjA3Ny0yLjE2MS4wMjMtMi41MDYuMTM4LS40ODEuMzQ0LS45LjYyMy0xLjI2LjI3Ni0uMzYuNzc0LS44ODcgMS40OTYtMS41ODUuNzIyLS42OTcgMS4xODctMS4yMDQgMS4zOTUtMS41Mi4yMDYtLjMxNi4zMS0uNzg4LjMxLTEuNDEzcy0uMjM4LTEuMTc4LS43MTQtMS42NmMtLjQ3Ny0uNDgyLTEuMTY3LS43MjItMi4wNzQtLjcyMi0xLjg3MiAwLTIuODg4IDEuMDQtMy4wNDQgMi45NDgtLjAyNS4zMTItLjMyMi41NDQtLjY1Ni41NDRoLS43MTFjLS4zODEgMC0uNjc0LS4zMS0uNjQ1LS42NjV6IiBmaWxsPSIjRkZGIi8+PC9nPjwvc3ZnPjxzdmcgd2lkdGg9IjY0IiBoZWlnaHQ9IjcyIiB2aWV3Qm94PSItMiAtMiA2NCA3MiIgaWQ9InNyYy0tc3ZnLS10eXBlX3BhZ2VzX2xhcmdlIiB4PSIxMjgiPjx0aXRsZT5wYWdlczwvdGl0bGU+PGRlZnM+PHBhdGggZD0iTTAgMS45OThBMiAyIDAgMCAxIDEuOTk3IDBINDJsMTggMTcuOTI1djQ4LjA4MUExLjk5NiAxLjk5NiAwIDAgMSA1OC4wMDQgNjhIMS45OTZBMS45OTkgMS45OTkgMCAwIDEgMCA2Ni4wMDJWMS45OTh6IiBpZD0icWEiLz48L2RlZnM+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48dXNlIGZpbGw9IiNGRkE4MzEiIHhsaW5rOmhyZWY9IiNxYSIvPjxwYXRoIGQ9Ik0xIDY2LjAwMmMwIC41NS40NDcuOTk4Ljk5Ni45OThoNTYuMDA4Yy41NSAwIC45OTYtLjQ0Ni45OTYtLjk5NFYxOEw0MiAxSDEuOTk3QS45OTUuOTk1IDAgMCAwIDEgMS45OTh2NjQuMDA0ek0xLjk5NyAwSDQybDE4IDE3LjkyNXY0OC4wODFBMS45OTYgMS45OTYgMCAwIDEgNTguMDA0IDY4SDEuOTk2QTEuOTk5IDEuOTk5IDAgMCAxIDAgNjYuMDAyVjEuOTk4QzAgLjg5NS44OSAwIDEuOTk3IDB6IiBmaWxsLW9wYWNpdHk9Ii4wNSIgZmlsbD0iIzAwMCIvPjxwYXRoIGZpbGwtb3BhY2l0eT0iLjEiIGZpbGw9IiMwMDAiIGQ9Ik02MCAzNGwtLjAxNy0xNkg0NHoiLz48cGF0aCBkPSJNNDIgMGwxOCAxOEg0My45OTVBMS45OTUgMS45OTUgMCAwIDEgNDIgMTYuMDA1VjB6IiBmaWxsPSIjRkZFMUI3Ii8+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTMgMjMpIiBmaWxsPSIjRkZGIj48cGF0aCBkPSJNMCAwaDM0djJIMHpNMTggNmgxNnYySDE4ek0wIDZoMTR2MTRIMHpNMTggMTJoMTZ2MkgxOHpNMTggMThoMTZ2MkgxOHpNMCAyNGgzNHYySDB6Ii8+PC9nPjwvZz48L3N2Zz48c3ZnIHdpZHRoPSIzNCIgaGVpZ2h0PSIzOCIgdmlld0JveD0iLTIgLTIgMzQgMzgiIGlkPSJzcmMtLXN2Zy0tdHlwZV9wZGZfbGFyZ2UiIHg9IjEzNiIgeT0iMTQ4Ij48dGl0bGU+cGRmPC90aXRsZT48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0wIDJDMCAuODk1Ljg5MiAwIDEuOTk3IDBoMjAuMDY3TDMwIDh2MjQuMDAzQTEuOTk4IDEuOTk4IDAgMCAxIDI4LjAwOCAzNEgxLjk5MkMuODkyIDM0IDAgMzMuMTA4IDAgMzJWMnoiIGZpbGw9IiNGQTVDNDciLz48cGF0aCBkPSJNMSAzMmMwIC41NTUuNDQzIDEgLjk5MiAxaDI2LjAxNmEuOTk4Ljk5OCAwIDAgMCAuOTkyLS45OTdzLjA4OS0yMy41LS4wMTMtMjMuNjAyQzI2LjQyNSA1LjgzNiAyMS43MzMgMSAyMS41OTUgMUgxLjk5MkEuOTk1Ljk5NSAwIDAgMCAxIDJ2MzB6TTAgMkMwIC44OTUuODkgMCAxLjk5MiAwaDIwLjAxNkwzMCA4djI0LjAwM0ExLjk5OCAxLjk5OCAwIDAgMSAyOC4wMDggMzRIMS45OTJDLjg5MiAzNCAwIDMzLjEwOCAwIDMyVjJ6IiBmaWxsLW9wYWNpdHk9Ii4wNSIgZmlsbD0iIzAwMCIvPjxwYXRoIGQ9Ik0yMyA3aDZsMSAxdjZsLTctN3oiIGZpbGwtb3BhY2l0eT0iLjEiIGZpbGw9IiMwMDAiLz48cGF0aCBkPSJNMjIgMGw4IDhoLTZjLTEuMTA1IDAtMi0uODg2LTItMlYweiIgZmlsbD0iI0ZFOUQ4RiIvPjxwYXRoIGQ9Ik0yMi4zMzcgMTguNjc1YTIuMDgxIDIuMDgxIDAgMCAwLTEuNjQtMS4wNzVjLS43NzUtLjA3NC0xLjg1OS4wMDUtMy4zNzcuMjM3YTEyNS40NiAxMjUuNDYgMCAwIDAtLjYxOC0uNTY2Yy0xLjA0LS45NDItMS45NTgtMi4zMDMtMi4xODMtMi42NDQuMjg2LTIuNjg5LjE1NC0zLjUwOC0uMDE0LTMuOTVDMTQuMTA1IDkuNjI3IDEzLjMzIDkgMTIuNDMyIDljLS42OSAwLTEuMzM0LjM5LTEuNjgyIDEuMDE4LS40MDIuNzI0LS4zNiAxLjYzMy4xMTkgMi40OS4yNTIuNDU0LjU5LjgyMyAxLjAxOCAxLjI5LjMwNS4zMzQuNjc1LjczNyAxLjExMiAxLjI4LS4wNTkuNTA1LS4xMjIuOTktLjE3OCAxLjQxNy0uMTM4IDEuMDU2LS4zMjQgMS44NjctLjUyIDIuNzI2bC0uMDE5LjA4MWMtLjE1Ni4wNjktLjMxNi4xMzctLjQ3OS4yMDYtLjg3LjM2Ny0xLjg1NS43ODQtMi42MjUgMS41MS0xLjQzMyAxLjM0OC0xLjIyMyAyLjQ3OC0xLjA2NiAyLjkwMUM4LjM1OSAyNC41ODYgOC45NjggMjUgOS43IDI1Yy43MzQgMCAxLjQ4MS0uNDI0IDIuMDUtMS4xNjdhMTAuOTY5IDEwLjk2OSAwIDAgMCAxLjc1Mi0zLjQyYy45MDQtLjM2NSAyLjM0Mi0uNzg2IDMuMDItLjkwNWwuMzQyLS4wNTkuMjI3LjIxMmMuNzIuNjcyIDEuNDI3IDEuMzMgMS45NDcgMS43NzQuNDI0LjM2Ljk2LjU1OCAxLjUxLjU1OGguMDAyYy44NjYgMCAxLjYzLS40OSAxLjk0Ny0xLjI0NS4yNjItLjYyOC4xOTktMS40NC0uMTYtMi4wNzN6bS0xMS41NDYgNC4wMDRjLS4yODIuMzY2LS42MTguNTg2LS44OTYuNTg2LS4wNTUgMC0uMTg3LS4wMS0uMjIzLS4xMDgtLjA2NC0uMTcyLjA2My0uNjM3LjY3My0xLjIxMi4zOTQtLjM3Mi45MDItLjY0OSAxLjQzNS0uODk1YTkuMTUgOS4xNSAwIDAgMS0uOTg5IDEuNjI5em0yLjU0NC05LjcxNWE1OC4zODUgNTguMzg1IDAgMCAwLS4yNDUtLjI2OGMtLjM2OS0uNDA0LS42MzYtLjY5NS0uOC0uOTktLjIwNi0uMzctLjI0OC0uNzE4LS4xMTYtLjk1N2EuNDc4LjQ3OCAwIDAgMSAuNDEyLS4yNTVjLjI3NiAwIC41MzMuMjU5LjcwNC43MDguMDM4LjA5OC4xMjYuNDc1LjA0NSAxLjc2MnptLjc0MSA1LjUzOGwuMDMyLS4xMzMtLjAyNC4wMTJjLjExLS41MTguMjEyLTEuMDc1LjI5OC0xLjcwOS4zNDcuNDQxLjc2Ny45MzIgMS4yMjUgMS4zNzYtLjQ2Ny4xMjEtMS4wMTQuMjgyLTEuNTMuNDU0em03LjEwNCAxLjQ3NGMtLjA4My4xOTgtLjMxOC4zMjgtLjU5OS4zMjhhLjg5MS44OTEgMCAwIDEtLjU3Ny0uMjEzIDM5LjAwOCAzOS4wMDggMCAwIDEtMS4xODctMS4wNjhjLjc1My0uMDgyIDEuMzMzLS4xMSAxLjc3NC0uMDYzLjIzMi4wMjEuNC4xMy41MTIuMzMuMTM3LjIzOS4xNDIuNTMyLjA3Ny42ODZ6IiBmaWxsPSIjRkZGIi8+PC9nPjwvc3ZnPjxzdmcgd2lkdGg9IjM0IiBoZWlnaHQ9IjM4IiB2aWV3Qm94PSItMiAtMiAzNCAzOCIgaWQ9InNyYy0tc3ZnLS10eXBlX3BwdF9sYXJnZSIgeD0iMTkyIj48dGl0bGU+cHB0PC90aXRsZT48ZGVmcz48cGF0aCBpZD0ic2EiIGQ9Ik0wIDJDMCAuODk1Ljg5IDAgMS45OTEgMEgyMmw4IDh2MjQuMDAzQTEuOTk4IDEuOTk4IDAgMCAxIDI4LjAwOCAzNEgxLjk5MkMuODkyIDM0IDAgMzMuMTA4IDAgMzJWMnoiLz48L2RlZnM+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48dXNlIGZpbGw9IiNFN0E3NEQiIHhsaW5rOmhyZWY9IiNzYSIvPjxwYXRoIGQ9Ik0xIDMyYzAgLjU1NS40NDMgMSAuOTkyIDFoMjYuMDE2YS45OTguOTk4IDAgMCAwIC45OTItLjk5N3MuMDg5LTIzLjUtLjAxMy0yMy42MDJDMjYuNDI1IDUuODM2IDIxLjczMyAxIDIxLjU5NSAxSDEuOTkyQS45OTUuOTk1IDAgMCAwIDEgMnYzMHpNMCAyQzAgLjg5NS44OSAwIDEuOTkyIDBoMjAuMDE2TDMwIDh2MjQuMDAzQTEuOTk4IDEuOTk4IDAgMCAxIDI4LjAwOCAzNEgxLjk5MkMuODkyIDM0IDAgMzMuMTA4IDAgMzJWMnoiIGZpbGwtb3BhY2l0eT0iLjA1IiBmaWxsPSIjMDAwIi8+PHBhdGggZD0iTTIzIDdoNmwxIDF2NmwtNy03eiIgZmlsbC1vcGFjaXR5PSIuMSIgZmlsbD0iIzAwMCIvPjxwYXRoIGQ9Ik0yMiAwbDggOGgtNmMtMS4xMDUgMC0yLS44ODYtMi0yVjB6IiBmaWxsPSIjRjNDQTkxIi8+PHBhdGggZD0iTTExIDEwdjE1aDN2LTVsMi4wMTcuMDI2YzIuMTQxIDAgNC4yMS0uODIzIDQuMjEtNC45OCAwLTMuNTA4LTEuMDU2LTUuMDQ4LTQuNzU1LTUuMDQ2SDExem0zIDd2LTMuOTk4aDEuMjIyYzEuNjY2LS4wNDcgMS43NzUuNjE5IDEuNzc1IDEuOTE0LjA0NCAxLjQ0LS40NDYgMi4wODQtMS43NzUgMi4wODRIMTR6IiBmaWxsPSIjRkZGIi8+PC9nPjwvc3ZnPjxzdmcgd2lkdGg9IjM0IiBoZWlnaHQ9IjM4IiB2aWV3Qm94PSItMiAtMiAzNCAzOCIgaWQ9InNyYy0tc3ZnLS10eXBlX3NjYW5fbGFyZ2UiIHg9IjE5MiIgeT0iMzgiPjx0aXRsZT4zMCozNOaWh+aho+aJq+aPjzwvdGl0bGU+PGRlZnM+PHBhdGggZD0iTTAgMkMwIC44OTUuODkgMCAxLjk5MiAwSDIyLjAxTDMwIDh2MjQuMDAzQTEuOTk4IDEuOTk4IDAgMCAxIDI4LjAwOCAzNEgxLjk5MkMuODkyIDM0IDAgMzMuMTA4IDAgMzJWMnoiIGlkPSJ0YSIvPjwvZGVmcz48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjx1c2UgZmlsbD0iIzQzRDlBRCIgeGxpbms6aHJlZj0iI3RhIi8+PHBhdGggZD0iTTkgMTEuOTk5YzAtLjU1Mi40NTYtLjk5OSAxLjAwMi0uOTk5aDkuOTk2YTEgMSAwIDAgMSAxLjAwMi45OTlWMjNjMCAuNTUyLS40NTYuOTk5LTEuMDAyLjk5OWgtOS45OTZBMSAxIDAgMCAxIDkgMjMuMDAxVjEyeiIgZmlsbD0iI0ZGRiIvPjxwYXRoIGQ9Ik0xMi41IDE0LjVoNU0xMi41IDE3LjVoNU0xMi41IDIwLjVoNSIgc3Ryb2tlPSIjNDNEOUFEIiBzdHJva2UtbGluZWNhcD0ic3F1YXJlIi8+PHBhdGggZmlsbD0iI0ZGRiIgZD0iTTEwIDlWOEg2djRoMVY5ek0yMCA5VjhoNHY0aC0xVjl6TTEwIDI2djFINnYtNGgxdjN6TTIwIDI2djFoNHYtNGgtMXYzeiIvPjxwYXRoIGQ9Ik0xIDJ2MzBjMCAuNTU1LjQ0MyAxIC45OTIgMWgyNi4wMTZhLjk5OC45OTggMCAwIDAgLjk5Mi0uOTk3VjhsLjI5Mi43MDctNy45OS04TDIyLjAxIDFIMS45OTJBLjk5NS45OTUgMCAwIDAgMSAyek0wIDJDMCAuODk1Ljg5IDAgMS45OTIgMEgyMi4wMUwzMCA4djI0LjAwM0ExLjk5OCAxLjk5OCAwIDAgMSAyOC4wMDggMzRIMS45OTJDLjg5MiAzNCAwIDMzLjEwOCAwIDMyVjJ6IiBmaWxsLW9wYWNpdHk9Ii4wNSIgZmlsbD0iIzAwMCIvPjxwYXRoIGZpbGwtb3BhY2l0eT0iLjEiIGZpbGw9IiMwMDAiIGQ9Ik0zMCA4djZsLTcuNTA2LTYuNjcgNi41Mi0uMzN6Ii8+PHBhdGggZD0iTTIyIDBsOCA4aC02LjAwMkExLjk5MyAxLjk5MyAwIDAgMSAyMiA2LjAwMlYweiIgZmlsbD0iIzgwRUZDRSIvPjwvZz48L3N2Zz48c3ZnIHdpZHRoPSIzNCIgaGVpZ2h0PSIzOCIgdmlld0JveD0iLTIgLTIgMzQgMzgiIGlkPSJzcmMtLXN2Zy0tdHlwZV90YWJsZV9sYXJnZSIgeD0iMTkyIiB5PSI3NiI+PHRpdGxlPmZvcm08L3RpdGxlPjxkZWZzPjxwYXRoIGlkPSJ1YSIgZD0iTTAgMkMwIC44OTUuODkyIDAgMS45OTYgMGgyMC4wNTZMMzAgNy45NjJWMzJhMiAyIDAgMCAxLTEuOTkyIDJIMS45OTJDLjg5MiAzNCAwIDMzLjEwOCAwIDMyVjJ6Ii8+PC9kZWZzPjxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+PHVzZSBmaWxsPSIjRTE5MkI1IiB4bGluazpocmVmPSIjdWEiLz48cGF0aCBkPSJNMSAzMmMwIC41NTUuNDQzIDEgLjk5MiAxaDI2LjAxNmEuOTk4Ljk5OCAwIDAgMCAuOTkyLS45OTdzLjA4OS0yMy41LS4wMTMtMjMuNjAyQzI2LjQyNSA1LjgzNiAyMS43MzMgMSAyMS41OTUgMUgxLjk5MkEuOTk1Ljk5NSAwIDAgMCAxIDJ2MzB6TTAgMkMwIC44OTUuODkgMCAxLjk5MiAwaDIwLjAxNkwzMCA4djI0LjAwM0ExLjk5OCAxLjk5OCAwIDAgMSAyOC4wMDggMzRIMS45OTJDLjg5MiAzNCAwIDMzLjEwOCAwIDMyVjJ6IiBmaWxsLW9wYWNpdHk9Ii4wNSIgZmlsbD0iIzAwMCIvPjxwYXRoIGQ9Ik0yMyA3bDcgMXY2bC03LTd6IiBmaWxsLW9wYWNpdHk9Ii4xIiBmaWxsPSIjMDAwIi8+PHBhdGggZD0iTTIyIDBsOCA4aC02LjAwMkExLjk5MyAxLjk5MyAwIDAgMSAyMiA2LjAwMlYweiIgZmlsbD0iI0YzQkRENCIvPjxwYXRoIGQ9Ik0xMyAxNkg5di00aDEydjRoLTZ2LTRoLTJ2NHptMCAySDl2NGgxMnYtNGgtNnY0aC0ydi00em0tNi02Ljk5M0M3IDEwLjQ1IDcuNDQ1IDEwIDggMTBoMTRjLjU1MiAwIDEgLjQ1IDEgMS4wMDd2MTEuOTg2QzIzIDIzLjU1IDIyLjU1NSAyNCAyMiAyNEg4Yy0uNTUyIDAtMS0uNDUtMS0xLjAwN1YxMS4wMDd6IiBmaWxsPSIjRkZGIi8+PC9nPjwvc3ZnPjxzdmcgd2lkdGg9IjM0IiBoZWlnaHQ9IjM4IiB2aWV3Qm94PSItMiAtMiAzNCAzOCIgaWQ9InNyYy0tc3ZnLS10eXBlX3R4dF9sYXJnZSIgeD0iMTkyIiB5PSIxMTQiPjx0aXRsZT50ZXh0PC90aXRsZT48ZGVmcz48cGF0aCBpZD0idmEiIGQ9Ik0wIDJDMCAuODk1Ljg5IDAgMS45OTEgMEgyMmw4IDh2MjQuMDAzQTEuOTk4IDEuOTk4IDAgMCAxIDI4LjAwOCAzNEgxLjk5MkMuODkyIDM0IDAgMzMuMTA4IDAgMzJWMnoiLz48L2RlZnM+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48dXNlIGZpbGw9IiM5QkIxQzUiIHhsaW5rOmhyZWY9IiN2YSIvPjxwYXRoIGQ9Ik0xIDMyYzAgLjU1NS40NDMgMSAuOTkyIDFoMjYuMDE2YS45OTguOTk4IDAgMCAwIC45OTItLjk5N3MuMDg5LTIzLjUtLjAxMy0yMy42MDJDMjYuNDI1IDUuODM2IDIxLjczMyAxIDIxLjU5NSAxSDEuOTkyQS45OTUuOTk1IDAgMCAwIDEgMnYzMHpNMCAyQzAgLjg5NS44OSAwIDEuOTkyIDBoMjAuMDE2TDMwIDh2MjQuMDAzQTEuOTk4IDEuOTk4IDAgMCAxIDI4LjAwOCAzNEgxLjk5MkMuODkyIDM0IDAgMzMuMTA4IDAgMzJWMnoiIGZpbGwtb3BhY2l0eT0iLjA1IiBmaWxsPSIjMDAwIi8+PHBhdGggZD0iTTIzIDdoNmwxIDF2NmwtNy03eiIgZmlsbC1vcGFjaXR5PSIuMSIgZmlsbD0iIzAwMCIvPjxwYXRoIGQ9Ik0yMiAwbDggOGgtNmMtMS4xMDUgMC0yLS44ODYtMi0yVjB6IiBmaWxsPSIjRDNEQUUxIi8+PHBhdGggZD0iTTkgMTMuNjkxaDEuODQ2cy4wMjMtLjQ5OS45MjMtLjg0NSAxLjg0Ni4xMzUgMS44NDYuMTM1djcuOTEzaC0xLjg5OFYyM2g2LjU4N3YtMi4xMDZoLTEuOTJ2LTcuOTEzcy43Ny0uNTk2IDEuNzktLjEzNWMxLjAyLjQ2MiAxLjAyLjg0NSAxLjAyLjg0NUgyMVYxMUg5djIuNjkxeiIgZmlsbD0iI0ZGRiIvPjwvZz48L3N2Zz48c3ZnIHdpZHRoPSIzNCIgaGVpZ2h0PSIzOCIgdmlld0JveD0iLTIgLTIgMzQgMzgiIGlkPSJzcmMtLXN2Zy0tdHlwZV92aWRlb19sYXJnZSIgeD0iMTM2IiB5PSI3MiI+PHRpdGxlPnBsYXk8L3RpdGxlPjxkZWZzPjxwYXRoIGlkPSJ3YSIgZD0iTTAgMmEyIDIgMCAwIDEgMi4wMDMtMmgyMC4xMjZMMzAgNy45NjJWMzJhMiAyIDAgMCAxLTEuOTkyIDJIMS45OTJDLjg5MiAzNCAwIDMzLjEwOCAwIDMyVjJ6Ii8+PC9kZWZzPjxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+PHVzZSBzdHJva2Utb3BhY2l0eT0iLjA1IiBzdHJva2U9IiMwMDAiIGZpbGw9IiM5OTlBRUYiIHhsaW5rOmhyZWY9IiN3YSIvPjxwYXRoIGQ9Ik0xIDMyYzAgLjU1NS40NDMgMSAuOTkyIDFoMjYuMDE2YS45OTguOTk4IDAgMCAwIC45OTItLjk5N3MuMDg5LTIzLjUtLjAxMy0yMy42MDJDMjYuNDI1IDUuODM2IDIxLjczMyAxIDIxLjU5NSAxSDEuOTkyQS45OTUuOTk1IDAgMCAwIDEgMnYzMHpNMCAyQzAgLjg5NS44OSAwIDEuOTkyIDBoMjAuMDE2TDMwIDh2MjQuMDAzQTEuOTk4IDEuOTk4IDAgMCAxIDI4LjAwOCAzNEgxLjk5MkMuODkyIDM0IDAgMzMuMTA4IDAgMzJWMnoiIGZpbGwtb3BhY2l0eT0iLjA1IiBmaWxsPSIjMDAwIi8+PHBhdGggZD0iTTIzIDdsNyAxdjdsLTctOHoiIGZpbGwtb3BhY2l0eT0iLjEiIGZpbGw9IiMwMDAiLz48cGF0aCBkPSJNMjIgMGw4IDguMDA4aC02LjAwMmExLjk5NCAxLjk5NCAwIDAgMS0xLjk5OC0yVjB6IiBmaWxsPSIjQzJDM0Y4Ii8+PHBhdGggZmlsbD0iI0ZGRiIgZD0iTTEwLjk5IDExLjE0Mmw5Ljg0NCA2LjEyNS05Ljg0NCA2LjEzN3oiLz48L2c+PC9zdmc+PHN2ZyB3aWR0aD0iMzQiIGhlaWdodD0iMzgiIHZpZXdCb3g9Ii0yIC0yIDM0IDM4IiBpZD0ic3JjLS1zdmctLXR5cGVfd29yZF9sYXJnZSIgeD0iNjgiIHk9IjExMCI+PHRpdGxlPndvcmQ8L3RpdGxlPjxkZWZzPjxwYXRoIGlkPSJ4YSIgZD0iTTAgMkMwIC44OTUuODg5IDAgMi4wMDggMGgxOS45NjZMMzAgOC4wMjV2MjMuOThBMS45OTcgMS45OTcgMCAwIDEgMjguMDA4IDM0SDEuOTkyQy44OTIgMzQgMCAzMy4xMDggMCAzMlYyeiIvPjwvZGVmcz48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjx1c2UgZmlsbD0iIzVCQkFFRiIgeGxpbms6aHJlZj0iI3hhIi8+PHBhdGggZD0iTTEgMzJjMCAuNTU1LjQ0MyAxIC45OTIgMWgyNi4wMTZhLjk5OC45OTggMCAwIDAgLjk5Mi0uOTk3cy4wODktMjMuNS0uMDEzLTIzLjYwMkMyNi40MjUgNS44MzYgMjEuNzMzIDEgMjEuNTk1IDFIMS45OTJBLjk5NS45OTUgMCAwIDAgMSAydjMwek0wIDJDMCAuODk1Ljg5IDAgMS45OTIgMGgyMC4wMTZMMzAgOHYyNC4wMDNBMS45OTggMS45OTggMCAwIDEgMjguMDA4IDM0SDEuOTkyQy44OTIgMzQgMCAzMy4xMDggMCAzMlYyeiIgZmlsbC1vcGFjaXR5PSIuMDUiIGZpbGw9IiMwMDAiLz48cGF0aCBkPSJNMjMgN2g2bDEgMXY2bC03LTd6IiBmaWxsLW9wYWNpdHk9Ii4xIiBmaWxsPSIjMDAwIi8+PHBhdGggZD0iTTIyIDBsOCA4aC02Yy0xLjEwNSAwLTItLjg4Ni0yLTJWMHoiIGZpbGw9IiM4QUQ1RkYiLz48cGF0aCBkPSJNMTguNjkgMTFjLS4wOSAwLS4xNjQuMDYzLS4xNjQuMTM5djEuNjY1YzAgLjA3Ni4wNzUuMTM4LjE2NC4xMzhoMS44NjJjLjEwMiAwIC4xOC4wOC4xNjEuMTY2bC0xLjQzIDYuNjA2aC0uNDk3bC0yLjA0OC04LjYwMmMtLjAxNC0uMDY0LS4wODItLjExMi0uMTYxLS4xMTJoLTIuOTU4Yy0uMDc2IDAtLjE0NC4wNDUtLjE2LjExbC0yLjMgOC42MDRoLS40NDdsLTEuNzg4LTguNTk4Yy0uMDEzLS4wNjctLjA4Mi0uMTE2LS4xNjEtLjExNkg2LjE2NWMtLjEwNCAwLS4xODMuMDgtLjE2Mi4xNjdMOS4xNiAyMy44OWMuMDE2LjA2NS4wODMuMTExLjE2Mi4xMTFoMi45NThjLjA3NyAwIC4xNDQtLjA0Ni4xNi0uMTFsMi4zODUtOS4xODljLjAzNy0uMTQ4LjI4OC0uMTQ3LjMyMS4wMDJsMi4xODUgOS4xODVjLjAxNi4wNjUuMDg0LjExMi4xNjIuMTEyaDIuODg1Yy4wNzcgMCAuMTQ1LS4wNDYuMTYtLjExbDMuMjk4LTEyLjcyMmMuMDIyLS4wODYtLjA1Ni0uMTY4LS4xNi0uMTY4SDE4LjY5eiIgZmlsbD0iI0ZGRiIvPjwvZz48L3N2Zz48L3N2Zz4=");
+  background-repeat: no-repeat;
+}
+.src--svg--attachment_download {
+  background-position: 81.73076923076923% 44.44444444444444%;
+  width: 18px;
+  height: 24px;
+}
+.src--svg--type_audio_large {
+  background-position: 70.83333333333333% 74.32432432432432%;
+  width: 34px;
+  height: 38px;
+}
+.src--svg--type_code_large {
+  background-position: 17.708333333333332% 100%;
+  width: 34px;
+  height: 38px;
+}
+.src--svg--type_compress_large {
+  background-position: 53.125% 100%;
+  width: 34px;
+  height: 38px;
+}
+.src--svg--type_csv_large {
+  background-position: 17.708333333333332% 48.648648648648646%;
+  width: 34px;
+  height: 38px;
+}
+.src--svg--type_excel_large {
+  background-position: 35.416666666666664% 48.648648648648646%;
+  width: 34px;
+  height: 38px;
+}
+.src--svg--type_flash_large {
+  background-position: 53.125% 48.648648648648646%;
+  width: 34px;
+  height: 38px;
+}
+.src--svg--type_folder_large {
+  background-position: 100% 96.20253164556962%;
+  width: 34px;
+  height: 28px;
+}
+.src--svg--type_html_large {
+  background-position: 0 74.32432432432432%;
+  width: 34px;
+  height: 38px;
+}
+.src--svg--type_image_large {
+  background-position: 17.708333333333332% 74.32432432432432%;
+  width: 34px;
+  height: 38px;
+}
+.src--svg--type_key_large {
+  background-position: 0 0;
+  width: 64px;
+  height: 72px;
+}
+.src--svg--type_md_large {
+  background-position: 53.125% 74.32432432432432%;
+  width: 34px;
+  height: 38px;
+}
+.src--svg--type_music_large {
+  background-position: 0 48.648648648648646%;
+  width: 34px;
+  height: 38px;
+}
+.src--svg--type_note_large {
+  background-position: 0 100%;
+  width: 34px;
+  height: 38px;
+}
+.src--svg--type_numbers_large {
+  background-position: 39.50617283950617% 0;
+  width: 64px;
+  height: 72px;
+}
+.src--svg--type_other_large {
+  background-position: 35.416666666666664% 100%;
+  width: 34px;
+  height: 38px;
+}
+.src--svg--type_pages_large {
+  background-position: 79.01234567901234% 0;
+  width: 64px;
+  height: 72px;
+}
+.src--svg--type_pdf_large {
+  background-position: 70.83333333333333% 100%;
+  width: 34px;
+  height: 38px;
+}
+.src--svg--type_ppt_large {
+  background-position: 100% 0;
+  width: 34px;
+  height: 38px;
+}
+.src--svg--type_scan_large {
+  background-position: 100% 25.675675675675677%;
+  width: 34px;
+  height: 38px;
+}
+.src--svg--type_table_large {
+  background-position: 100% 51.351351351351354%;
+  width: 34px;
+  height: 38px;
+}
+.src--svg--type_txt_large {
+  background-position: 100% 77.02702702702703%;
+  width: 34px;
+  height: 38px;
+}
+.src--svg--type_video_large {
+  background-position: 70.83333333333333% 48.648648648648646%;
+  width: 34px;
+  height: 38px;
+}
+.src--svg--type_word_large {
+  background-position: 35.416666666666664% 74.32432432432432%;
+  width: 34px;
+  height: 38px;
+}
+.editor-area {
+  padding: 0;
+}</style></head>
+<body><article class="editor-area">
+<div class="editor-area" id="noteIFrameContent"><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="color:#df402a;font-weight:bold;">1.编写一个函数将列表子元素的顺序进行反转</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">          &lt;ul id="target"&gt;	</div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">            &lt;li&gt;1&lt;/li&gt;</div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">            &lt;li&gt;2&lt;/li&gt;</div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">            &lt;li&gt;3&lt;/li&gt;</div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">            &lt;li&gt;4&lt;/li&gt;</div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">       &lt;/ul&gt;</div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">    <span style="color:#df402a;">解析思路①：</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">            var ul=document.getElementById("target");</div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">            var lists=ul.getElementByTagName("li");</div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">            var len=lists.length;</div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">            while(len--){</div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">                ul.appendChild(ul.childNodes[len])</div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">            <br></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">            }</div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">            缺点：</div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">            每次循环都会影响dom生成，肯定会损耗性能</div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">    <span style="color:#df402a;">解析思路②：fragment</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">            var ul=document.getElementById("tatget");</div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">            var lists=ul.getElementByTagName("li");</div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">            var fragment=document.createDocumentFragment();</div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">            for (var i=lists.length-1;i&gt;0;i--){</div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">                    fragment.appendChild(lists[i]);</div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">            }</div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">            ul.appendChild(fragment);</div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">            优点：使用了document.createDocumentFragment()</div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">    <span style="color:#df402a;">方法3：Array Reverse  思路加分，性能较高</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">        var ul =document.getElementById("target");</div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">        var children=Array.prototype.slice.call(ul.getElementByTagName("li"),0);</div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">        var len=children.length;</div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">        var  str="";</div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">        childtren.reverse();</div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">        for*(var i=0;i&lt;len;i++){</div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">            str+=children[i].outerHTML;</div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">        }</div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">        ul.innerHTML=str;</div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">    <span style="color:#df402a;">方法4： innerHTML 效率最优</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">        var ul=document.getElementById("target");</div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">        var lists=ul.getElementByTagName("li");</div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">        var str="";</div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">        for(var i=lists.lenght-1;i&gt;0;i--){</div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">            str+="&lt;li&gt;"+lists[i].innerHTML+"&lt;/li&gt;";</div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">        }</div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">        ul.innerHTMl=str;</div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">        测试：jsperf.com</div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">        越简单的题目，越体现水平</div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">        脱离框架，熟练的使用dom操作</div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">        出现循环的地方，多考虑性能</div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">        <span style="font-size:16px;color:#df402a;font-weight:bold;">2.画出ajax模型图</span></div><div yne-bulb-block="image"><img style="width: 448px; cursor: pointer;" alt="" src="./447" data-media-type="image" data-original="https://note.youdao.com/yws/public/resource/a2f8aeb8deacf26ff521d5bf37e2dd2e/xmlnote/3DB9C0ADBF774DE59493210F7A44437E/447"></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">                  </div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">        <br></div><div yne-bulb-block="image"><img style="width: 495px; cursor: pointer;" alt="" src="./451" data-media-type="image" data-original="https://note.youdao.com/yws/public/resource/a2f8aeb8deacf26ff521d5bf37e2dd2e/xmlnote/01E1B8C2FCA643A98248E7CE48938713/451"></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">        <br></div><div yne-bulb-block="image"><img style="width: 494px; cursor: pointer;" alt="" src="./450" data-media-type="image" data-original="https://note.youdao.com/yws/public/resource/a2f8aeb8deacf26ff521d5bf37e2dd2e/xmlnote/32B6F344F3B0406EAB4442563CC9020D/450"></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">        <br></div><div yne-bulb-block="image"><img style="width: 228px; cursor: pointer;" alt="" src="./452" data-media-type="image" data-original="https://note.youdao.com/yws/public/resource/a2f8aeb8deacf26ff521d5bf37e2dd2e/xmlnote/643E82F414054DD59201C6883E1CB531/452"></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">        <br></div><div yne-bulb-block="image"><img style="width: 381px; cursor: pointer;" alt="" src="./446" data-media-type="image" data-original="https://note.youdao.com/yws/public/resource/a2f8aeb8deacf26ff521d5bf37e2dd2e/xmlnote/FFA0B3F51C214354A5CFF4F1D367BAEC/446"></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">        <br></div><div yne-bulb-block="image"><img style="width: 377px; cursor: pointer;" alt="" src="./445" data-media-type="image" data-original="https://note.youdao.com/yws/public/resource/a2f8aeb8deacf26ff521d5bf37e2dd2e/xmlnote/8F28B91EBD254BD182660658CCA1DA86/445"></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">        <br></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">        <br></div><div yne-bulb-block="image"><img style="width: 520px; cursor: pointer;" alt="" src="./449" data-media-type="image" data-original="https://note.youdao.com/yws/public/resource/a2f8aeb8deacf26ff521d5bf37e2dd2e/xmlnote/71DD895FB0B84391A3ED1BBB2065D3D6/449"></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">        <br></div><div yne-bulb-block="image"><img style="width: 448px; cursor: pointer;" alt="" src="./448" data-media-type="image" data-original="https://note.youdao.com/yws/public/resource/a2f8aeb8deacf26ff521d5bf37e2dd2e/xmlnote/10A454589BCA4234B1465AF371C9A32A/448"></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;color:#df402a;font-weight:bold;">5.vue的通信： 子传父，父传子，非兄弟组件非父子组件怎么通信</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;color:#df402a;font-weight:bold;">6.es6的新特性有哪些，重点问到了class</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;color:#df402a;font-weight:bold;">7.你们团队有多少人，团队怎么分工的合作的，有没有用过git，不是github</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;color:#df402a;font-weight:bold;">8.在最近的项目中你负责什么，是怎么做的</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;color:#df402a;font-weight:bold;">9.谈谈购物车页面的你的逻辑怎么实现的</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">    <span style="font-size:12px;font-weight:bold;">加入购物车，主要靠详情页地址栏传过来的产品id来实现与后端接口更新购物车数据库表，购物车页面内容的主要是通过后台session保存的用户id来判断用户是否登录，从而通过用户id进行ajax请求购物车数据</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;color:#df402a;font-weight:bold;">10.如何在用户进入详情页的时候根据用户是否登录来选择是否显示产品相关详情</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">    <span style="font-size:12px;font-weight:bold;">这个主要用cookie，可以将登录时的用户id保存在cookie中，可以通过查询cookie是否有用户id存在，从而判断是否登录</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;color:#df402a;font-weight:bold;">11.你都做过哪些动画效果（不能是楼层和轮播，太low）</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;color:#df402a;font-weight:bold;">12.如果让你上传一张图片，如何在前端写逻辑代码限制他的图片类型和图片大小</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;color:#df402a;font-weight:bold;">13.谈谈用js编程和面向对象编程的看法和区别</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;color:#df402a;font-weight:bold;">14.写一个判断邮箱的正则</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;color:#df402a;font-weight:bold;">15.vue的路由是怎么实现的，请写出来</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;color:#df402a;font-weight:bold;">16.vue是怎么通信的，请写出来</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;color:#df402a;font-weight:bold;">17.http中封装了新的什么功能</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;color:#df402a;font-weight:bold;">18.ng4.0和ng2.0相比的区别</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;color:#df402a;font-weight:bold;">19.写一个使用个屏幕大小的响应式布局的网页以及app有没有问题</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;color:#df402a;font-weight:bold;">20.有没有封装过js的库，怎么封装的</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;color:#df402a;font-weight:bold;">21.ie兼容性为什么需要点击两次才会跳转，怎么解决的</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;color:#df402a;font-weight:bold;">22.项目中用到了什么第三方的ui组件</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;color:#df402a;font-weight:bold;">23.写出compoents下面的目录结构</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;color:#df402a;font-weight:bold;">24.main.js下引入了哪些组件</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;color:#df402a;font-weight:bold;">25.你在实际工作怎么保证性能优化</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;color:#df402a;font-weight:bold;">26.怎么处理客户缓存</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;color:#df402a;font-weight:bold;">27.你怎么理解点击穿透的</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;color:#df402a;font-weight:bold;">28.jQuery问为什么进行链式操作，是否理解extend扩展</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;color:#df402a;font-weight:bold;">29.怎么解决函数名冲突的问题</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;color:#df402a;font-weight:bold;">30.</span><span style="font-size:16px;font-family:Verdana;color:#df402a;background-color:#ffffff;font-weight:bold;">请说下具体使用vue的理解？</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">答：</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">    <span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">1、使用vue不必担心布局更改和类名重复导致的js重写，因为它是靠数据驱动双向绑定，底层是通过Object.defineProperty() 定义的数据 set、get 函数原理实现。</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">    <span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">2、组件化开发，让项目的可拓展性、移植性更好，代码重用性更高，就好像农民工建房子，拿起自己的工具包就可以开工。项目经理坐等收楼就好。</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">    <span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">3、单页应用的体验零距离接触安卓原生应用，局部组件更新界面，让用户体验更快速省时。</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">    <span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">4、js的代码无形的规范，团队合作开发代码可阅读性更高</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;color:#df402a;font-weight:bold;">31.</span><span style="font-size:16px;font-family:Verdana;color:#df402a;background-color:#ffffff;font-weight:bold;">你觉得哪些项目适合vue框架？</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">答：</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">    <span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">1、数据信息量比较多的，反之类似企业网站就无需此框架了。</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">    <span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">2、手机web和app应用多端共用一套界面的项目，因为使用vue.cli+webpack后的前端目录，非常有利于项目的跨平台部署。</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;font-family:Verdana;color:#df402a;background-color:#ffffff;font-weight:bold;">32.怎么理解MVVM模式的这些框架？</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">答：</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">    <span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">1、M就是Model模型层，存的一个数据对象。</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">    <span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">2、V就是View视图层，所有的html节点在这一层。</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">    <span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">3、VM就是ViewModel，它通过data属性连接Model模型层，通过el属性连接View视图层。</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;color:#df402a;">33.</span><span style="font-size:16px;font-family:Verdana;color:#df402a;background-color:#ffffff;font-weight:bold;">PC端项目你会在哪些场景使用Vue框架？</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">答：上万级数据需要瀑布流更新和搜索的时候，因为数据庞大的时候，用原生的dom操作js和html都会有列表的html布局，迭代很困难。再一个dom节点的大面积添加会影响性能。</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">    <span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">那么vue为什么解决这些问题呢？</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">        <span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">第一：只需用v-for在view层一个地方遍历数据即可，无需复制一段html代码在js和html两个地方。</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">        <span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">第二：vue通过</span><span style="font-size:12px;font-family:monospace;color:#333333;background-color:#ffffff;">Virtual Dom</span><span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">就是在js中模拟</span><span style="font-size:12px;font-family:monospace;color:#333333;background-color:#ffffff;">DOM</span><span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">对象树来优化</span><span style="font-size:12px;font-family:monospace;color:#333333;background-color:#ffffff;">DOM</span><span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">操作。</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;color:#df402a;">34.</span><span style="font-size:16px;font-family:Verdana;color:#df402a;background-color:#ffffff;font-weight:bold;">active-class是哪个组件的属性？嵌套路由怎么定义？</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">        <span style="font-family:Verdana;color:#333333;background-color:#ffffff;">vue-router模块的router-link组件。</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;font-family:Verdana;color:#df402a;background-color:#ffffff;">35.</span><span style="font-size:16px;font-family:Verdana;color:#df402a;background-color:#ffffff;font-weight:bold;">怎么定义vue-router的动态路由？怎么获取传过来的动态参数？ </span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">答：在router目录下的index.js文件中，对path属性加上/:id。  使用router对象的params.id</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;font-family:Verdana;color:#df402a;background-color:#ffffff;">36.</span><span style="font-size:16px;font-family:Verdana;color:#df402a;background-color:#ffffff;font-weight:bold;">vue-router有哪几种导航钩子</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">    <span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">三种，一种是全局导航钩子：router.beforeEach(to,from,next)，作用：跳转前进行判断拦截。第二种：组件内的钩子；第三种：单独路由独享组件</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;font-family:Verdana;color:#df402a;background-color:#ffffff;">37.</span><span style="font-size:16px;font-family:Verdana;color:#df402a;background-color:#ffffff;font-weight:bold;">scss是什么？安装使用的步骤是？有哪几大特性？</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">    <span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">预处理css，把css当前函数编写，定义变量,嵌套。 先装css-loader、node-loader、sass-loader等加载器模块，在webpack-base.config.js配置文件中加多一个拓展:extenstion，再加多一个模块：module里面test、loader</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">    <span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">css的预编译。</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">使用步骤：</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">第一步：用npm 下三个loader（sass-loader、css-loader、node-sass）</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">第二步：在build目录找到webpack.base.config.js，在那个extends属性中加一个拓展.scss</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">第三步：还是在同一个文件，配置一个module属性</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">第四步：然后在组件的style标签加上lang属性 ，例如：lang=”scss”</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">有哪几大特性:</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">1、可以用变量，例如（$变量名称=值）；</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">2、可以用混合器，例如（）</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">3、可以嵌套</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;font-family:Verdana;color:#df402a;background-color:#ffffff;">38.</span><span style="font-size:16px;font-family:Verdana;color:#df402a;background-color:#ffffff;font-weight:bold;">mint-ui是什么？怎么使用？说出至少三个组件使用方法？</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">基于vue的前端组件库。npm安装，然后import样式和js，vue.use（mintUi）全局引入。在单个组件局部引入：import {Toast} from ‘mint-ui’。组件一：Toast(‘登录成功’)；组件二：mint-header；组件三：mint-swiper</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;font-family:Verdana;color:#df402a;background-color:#ffffff;">39.v-model是什么？怎么使用？ vue中标签怎么绑定事件？</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">答：可以实现双向绑定，指令（v-class、v-for、v-if、v-show、v-on）。vue的model层的data属性。绑定事件：&lt;input @click=doLog() /&gt;</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;font-family:Verdana;color:#df402a;background-color:#ffffff;">40.axios是什么？怎么使用？描述使用它实现登录功能的流程？</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">答：请求后台资源的模块。npm install axios -S装好，然后发送的是跨域，需在配置文件中config/index.js进行设置。后台如果是Tp5则定义一个资源路由。js中使用import进来，然后.get或.post。返回在.then函数中如果成功，失败则是在.catch函数中</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;font-family:Verdana;color:#df402a;background-color:#ffffff;">41.axios+tp5进阶中，调用axios.post(‘api/user’)是进行的什么操作？</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;font-family:Verdana;color:#df402a;background-color:#ffffff;">axios.put(‘api/user/8′)呢？</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">跨域，添加用户操作，更新操作。</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;font-family:Verdana;color:#df402a;background-color:#ffffff;">42.什么是RESTful API？怎么使用?</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">答：是一个api的标准，无状态请求。请求的路由地址是固定的，如果是tp5则先路由配置中把资源路由配置好。标准有：.post .put .delete</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;font-family:Verdana;color:#df402a;background-color:#ffffff;">43.vuex是什么？怎么使用？哪种功能场景使用它？</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">答：vue框架中状态管理。在main.js引入store，注入。新建了一个目录store，….. export 。场景有：单页应用中，组件之间的状态。音乐播放、登录状态、加入购物车</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;font-family:Verdana;color:#df402a;background-color:#ffffff;">44.mvvm框架是什么？它和其它框架（jquery）的区别是什么？哪些场景适合？</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">答：一个model+view+viewModel框架，数据模型model，viewModel连接两个</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">区别：vue数据驱动，通过数据来显示视图层而不是节点操作。</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">场景：数据操作比较多的场景，更加便捷</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;font-family:Verdana;color:#df402a;background-color:#ffffff;">45.自定义指令（v-check、v-focus）的方法有哪些？它有哪些钩子函数？还有哪些钩子函数参数？</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">答：全局定义指令：在vue对象的directive方法里面有两个参数，一个是指令名称，另外一个是函数。组件内定义指令：directives</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">钩子函数：bind（绑定事件触发）、inserted(节点插入的时候触发)、update（组件内相关更新）</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">钩子函数参数：el、binding</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;font-family:Verdana;color:#df402a;background-color:#ffffff;">46.说出至少4种vue当中的指令和它的用法？</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">答：v-if：判断是否隐藏；v-for：数据循环出来；v-bind:class：绑定一个属性；v-model：实现双向绑定</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;font-family:Verdana;color:#df402a;background-color:#ffffff;">47.vue-router是什么？它有哪些组件？</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">答：vue用来写路由一个插件。router-link、router-view</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;font-family:Verdana;color:#df402a;background-color:#ffffff;">48.导航钩子有哪些？它们有哪些参数？</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">答：导航钩子有：a/全局钩子和组件内独享的钩子。b/beforeRouteEnter、afterEnter、beforeRouterUpdate、beforeRouteLeave</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">参数：有to（去的那个路由）、from（离开的路由）、next（一定要用这个函数才能去到下一个路由，如果不用就拦截）最常用就这几种</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;font-family:Verdana;color:#df402a;background-color:#ffffff;">49.Vue的双向数据绑定原理是什么？或者问（vue data是怎么实现的？）</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">答：vue.js 是采用数据劫持结合发布者-订阅者模式的方式，通过Object.defineProperty()来劫持各个属性的setter，getter，在数据变动时发布消息给订阅者，触发相应的监听回调。</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-family:Verdana;color:#333333;background-color:#ffffff;font-weight:bold;">具体步骤：</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-family:Verdana;color:#333333;background-color:#ffffff;font-weight:bold;">第一步：</span><span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">需要observe的数据对象进行递归遍历，包括子属性对象的属性，都加上 setter和getter</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">这样的话，给这个对象的某个值赋值，就会触发setter，那么就能监听到了数据变化</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-family:Verdana;color:#333333;background-color:#ffffff;font-weight:bold;">第二步：compile解析模板指令</span><span style="font-family:Verdana;color:#333333;background-color:#ffffff;">，</span><span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">将模板中的变量替换成数据，然后初始化渲染页面视图，并将每个指令对应的节点绑定更新函数，添加监听数据的订阅者，一旦数据有变动，收到通知，更新视图</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-family:Verdana;color:#333333;background-color:#ffffff;font-weight:bold;">第三步：Watcher订阅者是Observer和Compile之间通信的桥梁</span><span style="font-family:Verdana;color:#333333;background-color:#ffffff;">，主要做的事情是:</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">1、在自身实例化时往属性订阅器(dep)里面添加自己</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">2、自身必须有一个update()方法</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">3、待属性变动dep.notice()通知时，能调用自身的update()方法，并触发Compile中绑定的回调，则功成身退。</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-family:Verdana;color:#333333;background-color:#ffffff;font-weight:bold;">第四步：MVVM作为数据绑定的入口，整合Observer、Compile和Watcher三者</span><span style="font-family:Verdana;color:#333333;background-color:#ffffff;">，通过</span><span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">Observer来监听自己的model数据变化，通过Compile来解析编译模板指令，最终利用Watcher搭起Observer和Compile之间的通信桥梁，达到数据变化 -&gt; 视图更新；视图交互变化(input) -&gt; 数据model变更的双向绑定效果。</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;font-family:Verdana;color:#df402a;background-color:#ffffff;">50.请详细说下你对vue生命周期的理解？</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">：总共分为8个阶段创建前/后，载入前/后，更新前/后，销毁前/后。</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">创建前/后： 在beforeCreated阶段，vue实例的挂载元素$el和数据对象data都为undefined，还未初始化。在created阶段，vue实例的数据对象data有了，$el还没有。</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">载入前/后：在beforeMount阶段，vue实例的$el和data都初始化了，但还是挂载之前为虚拟的dom节点，data.message还未替换。在mounted阶段，vue实例挂载完成，data.message成功渲染。</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">更新前/后：当data变化时，会触发beforeUpdate和updated方法。</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">销毁前/后：在执行destroy方法后，对data的改变不会再触发周期函数，说明此时vue实例已经解除了事件监听以及和dom的绑定，但是dom结构依然存在</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;font-family:Verdana;color:#df402a;background-color:#ffffff;">51.请说下封装 vue 组件的过程？</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">答：首先，组件可以提升整个项目的开发效率。能够把页面抽象成多个相对独立的模块，解决了我们传统项目开发：效率低、难维护、复用性等问题。</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">然后，使用Vue.extend方法创建一个组件，然后使用Vue.component方法注册组件。子组件需要数据，可以在props中接受定义。而子组件修改好数据后，想把数据传递给父组件。可以采用emit方法。</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;font-family:Verdana;color:#df402a;background-color:#ffffff;">52.你是怎么认识vuex的？</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">答：vuex可以理解为一种开发模式或框架。比如PHP有thinkphp，java有spring等。</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">通过状态（数据源）集中管理驱动组件的变化（好比spring的IOC容器对bean进行集中管理）。</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">应用级的状态集中放在store中； 改变状态的方式是提交mutations，这是个同步的事物； 异步逻辑应该封装在action中。</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;font-family:Verdana;color:#df402a;background-color:#ffffff;">53.vue-loader是什么？使用它的用途有哪些？</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">答：解析.vue文件的一个加载器，跟template/js/style转换成js模块。</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">用途：js可以写es6、style样式可以scss或less、template可以加jade等</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;font-family:Verdana;color:#df402a;background-color:#ffffff;">54.请说出vue.cli项目中src目录每个文件夹和文件的用法？</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">答：assets文件夹是放静态资源；components是放组件；router是定义路由相关的配置;view视图；app.vue是一个应用主组件；main.js是入口文件</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;font-family:Verdana;color:#df402a;background-color:#ffffff;">55.vue.cli中怎样使用自定义的组件？有遇到过哪些问题吗？</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">答：第一步：在components目录新建你的组件文件（smithButton.vue），script一定要export default {</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">第二步：在需要用的页面（组件）中导入：import smithButton from ‘../components/smithButton.vue’</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">第三步：注入到vue的子组件的components属性上面,components:{smithButton}</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">第四步：在template视图view中使用，&lt;smith-button&gt;  &lt;/smith-button&gt;</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">问题有：smithButton命名，使用的时候则smith-button。</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;font-family:Verdana;color:#df402a;background-color:#ffffff;">56.</span><span style="font-size:16px;font-family:Verdana;color:#df402a;background-color:#ffffff;font-weight:bold;">聊聊你对Vue.js的template编译的理解？</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">答：简而言之，就是先转化成AST树，再得到的render函数返回VNode（Vue的虚拟DOM节点）</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">详情步骤：</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">首先，通过compile编译器把template编译成AST语法树（abstract syntax tree 即 源代码的抽象语法结构的树状表现形式），compile是createCompiler的返回值，createCompiler是用以创建编译器的。另外compile还负责合并option。</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;font-family:Verdana;color:#333333;background-color:#ffffff;">然后，AST会经过generate（将AST语法树转化成render funtion字符串的过程）得到render函数，render的返回值是VNode，VNode是Vue的虚拟DOM节点，里面有（标签名、子节点、文本等等）</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;font-family:Verdana;color:#df402a;background-color:#ffffff;">57.</span><span style="font-size:16px;font-family:Verdana;color:#df402a;background-color:#ffffff;font-weight:bold;">vue响应式原理？</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;font-family:Verdana;color:#df402a;background-color:#ffffff;font-weight:bold;">58.vue-router实现原理？</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;font-family:Verdana;color:#df402a;background-color:#ffffff;font-weight:bold;">59.为什么要选vue？与其它框架对比的优势和劣势？</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;font-family:Verdana;color:#df402a;background-color:#ffffff;font-weight:bold;">60.vuejs与angularjs以及react的区别？</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;font-family:Verdana;color:#df402a;background-color:#ffffff;font-weight:bold;">61.vuex是用来做什么的？</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;font-family:Verdana;color:#df402a;background-color:#ffffff;font-weight:bold;">62.vue源码结构</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;font-family:Verdana;color:#df402a;background-color:#ffffff;font-weight:bold;">63.HTML5中我们如何实现应用缓存？</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;font-family:Verdana;color:#df402a;background-color:#ffffff;font-weight:bold;">64.HTML5中的应用缓存是什么？</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;font-family:Verdana;color:#df402a;background-color:#ffffff;font-weight:bold;">65.我们如何刷新浏览器的应用缓存？</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;font-family:Verdana;color:#df402a;background-color:#ffffff;font-weight:bold;">66.应用缓存中的回退是什么？</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;font-family:Verdana;color:#df402a;background-color:#ffffff;font-weight:bold;">67.什么是WebSQL？</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;font-family:Verdana;color:#df402a;background-color:#ffffff;font-weight:bold;">68.Doctype作用? 严格模式与混杂模式-如何触发这两种</span></div><div yne-bulb-block="image"><img style="width: 329px; cursor: pointer;" alt="" src="./1397" data-media-type="image" data-original="https://note.youdao.com/yws/public/resource/a2f8aeb8deacf26ff521d5bf37e2dd2e/xmlnote/39169AAC006F4AE5AE3BEAF658A99D3C/1397"></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;font-family:Verdana;color:#df402a;background-color:#ffffff;font-weight:bold;">69.link 和@import 的区别是?</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;font-family:Verdana;color:#df402a;background-color:#ffffff;font-weight:bold;">70.CSS的盒子模型？</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;font-family:Verdana;color:#df402a;background-color:#ffffff;font-weight:bold;">71.HTML5 应用程序缓存和浏览器缓存有什么区别？</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;font-family:Verdana;color:#df402a;background-color:#ffffff;font-weight:bold;">72.什么是Web Workers？为什么我们需要他们？</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;font-family:Verdana;color:#df402a;background-color:#ffffff;font-weight:bold;">73.应用缓存中的网络是什么？</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;font-family:Verdana;color:#df402a;background-color:#ffffff;font-weight:bold;">74.本地存储和会话存储的区别</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;font-family:Courier New;color:#df402a;background-color:#f8f8f8;font-weight:bold;">75.const promise = new Promise((resolve, reject) =&gt; {
+ 		  console.log(1)
+ 		  resolve()
+		  console.log(2)
+	})
+promise.then(() =&gt; {
+  console.log(3)
+})
+console.log(4)</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;color:#333333;background-color:#ffffff;">运行结果：</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;font-family:Courier New;color:#333333;background-color:#f8f8f8;">1
+2
+4
+3</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;color:#333333;background-color:#ffffff;">解释：Promise 构造函数是同步执行的，</span><span style="font-size:12px;font-family:Courier New;color:#4e5980;background-color:#f8f8f8;">promise.then</span><span style="font-size:12px;color:#333333;background-color:#ffffff;"> 中的函数是异步执行的</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;font-family:Courier New;color:#df402a;background-color:#f8f8f8;font-weight:bold;">76.const promise1 = new Promise((resolve, reject) =&gt; {
+  setTimeout(() =&gt; {
+    resolve('success')
+  }, 1000)
+})
+const promise2 = promise1.then(() =&gt; {
+  throw new Error('error!!!')
+})
+
+console.log('promise1', promise1)
+console.log('promise2', promise2)
+
+setTimeout(() =&gt; {
+  console.log('promise1', promise1)
+  console.log('promise2', promise2)
+}, 2000)</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;">运行结果：</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;">promise1 Promise { &lt;pending&gt; }
+promise2 Promise { &lt;pending&gt; }
+(node:50928) UnhandledPromiseRejectionWarning: Unhandled promise rejection (rejection id: 1): Error: error!!!
+(node:50928) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+promise1 Promise { 'success' }
+promise2 Promise {
+  &lt;rejected&gt; Error: error!!!
+    at promise.then (...)
+    at &lt;anonymous&gt; }</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;">解释：promise 有 3 种状态：pending、fulfilled 或 rejected。状态改变只能是 pending-&gt;fulfilled 或者 pending-&gt;rejected，状态一旦改变则不能再变。上面 promise2 并不是 promise1，而是返回的一个新的 Promise 实例。</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;font-family:Courier New;color:#df402a;background-color:#f8f8f8;font-weight:bold;">77.const promise = new Promise((resolve, reject) =&gt; {
+  resolve('success1')
+  reject('error')
+  resolve('success2')
+})
+
+promise
+  .then((res) =&gt; {
+    console.log('then: ', res)
+  })
+  .catch((err) =&gt; {
+    console.log('catch: ', err)
+  })</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;">运行结果：</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;">then: success1</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;">解释：构造函数中的 resolve 或 reject 只有第一次执行有效，多次调用没有任何作用，呼应代码二结论：promise 状态一旦改变则不能再变。</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;font-family:Courier New;color:#df402a;background-color:#f8f8f8;font-weight:bold;">78.Promise.resolve(1)
+  .then((res) =&gt; {
+    console.log(res)
+    return 2
+  })
+  .catch((err) =&gt; {
+    return 3
+  })
+  .then((res) =&gt; {
+    console.log(res)
+  })</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;">运行结果：</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;">1
+2</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;">解释：promise 可以链式调用。提起链式调用我们通常会想到通过 return this 实现，不过 Promise 并不是这样实现的。promise 每次调用 .then 或者 .catch 都会返回一个新的 promise，从而实现了链式调用。</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;font-family:Courier New;color:#df402a;background-color:#f8f8f8;font-weight:bold;">79.const promise = new Promise((resolve, reject) =&gt; {
+  setTimeout(() =&gt; {
+    console.log('once')
+    resolve('success')
+  }, 1000)
+})
+
+const start = Date.now()
+promise.then((res) =&gt; {
+  console.log(res, Date.now() - start)
+})
+promise.then((res) =&gt; {
+  console.log(res, Date.now() - start)
+})</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;">运行结果：</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;">once
+success 1005
+success 1007</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;">解释：promise 的 .then 或者 .catch 可以被调用多次，但这里 Promise 构造函数只执行一次。或者说 promise 内部状态一经改变，并且有了一个值，那么后续每次调用 .then 或者 .catch 都会直接拿到该值。</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;font-family:Courier New;color:#df402a;background-color:#f8f8f8;font-weight:bold;">80.Promise.resolve()
+  .then(() =&gt; {
+    return new Error('error!!!')
+  })
+  .then((res) =&gt; {
+    console.log('then: ', res)
+  })
+  .catch((err) =&gt; {
+    console.log('catch: ', err)
+  })</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;">运行结果：</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;">then: Error: error!!!
+    at Promise.resolve.then (...)
+    at ...</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;">解释：.then 或者 .catch 中 return 一个 error 对象并不会抛出错误，所以不会被后续的 .catch 捕获，需要改成其中一种：</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;">return Promise.reject(new Error('error!!!'))
+throw new Error('error!!!')</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;">因为返回任意一个非 promise 的值都会被包裹成 promise 对象，即 return new Error('error!!!') 等价于 return Promise.resolve(new Error('error!!!'))。</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;font-family:Courier New;color:#df402a;background-color:#f8f8f8;font-weight:bold;">81.const promise = Promise.resolve()
+  .then(() =&gt; {
+    return promise
+  })
+promise.catch(console.error)</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;">运行结果：</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;">TypeError: Chaining cycle detected for promise #&lt;Promise&gt;
+    at &lt;anonymous&gt;
+    at process._tickCallback (internal/process/next_tick.js:188:7)
+    at Function.Module.runMain (module.js:667:11)
+    at startup (bootstrap_node.js:187:16)
+    at bootstrap_node.js:607:3</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;">解释：.then 或 .catch 返回的值不能是 promise 本身，否则会造成死循环。类似于：</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;">process.nextTick(function tick () {
+  console.log('tick')
+  process.nextTick(tick)
+})</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;font-family:Courier New;color:#df402a;background-color:#f8f8f8;font-weight:bold;">82.Promise.resolve(1)
+  .then(2)
+  .then(Promise.resolve(3))
+  .then(console.log)</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;">运行结果：</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;">1</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;">解释：.then 或者 .catch 的参数期望是函数，传入非函数则会发生值穿透。</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;font-family:Courier New;color:#df402a;background-color:#f8f8f8;font-weight:bold;">83.Promise.resolve()
+  .then(function success (res) {
+    throw new Error('error')
+  }, function fail1 (e) {
+    console.error('fail1: ', e)
+  })
+  .catch(function fail2 (e) {
+    console.error('fail2: ', e)
+  })</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;">运行结果：</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;">fail2: Error: error
+    at success (...)
+    at ...</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;">解释：.then 可以接收两个参数，第一个是处理成功的函数，第二个是处理错误的函数。.catch 是 .then 第二个参数的简便写法，但是它们用法上有一点需要注意：.then 的第二个处理错误的函数捕获不了第一个处理成功的函数抛出的错误，而后续的 .catch 可以捕获之前的错误。当然以下代码也可以：</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;">Promise.resolve()
+  .then(function success1 (res) {
+    throw new Error('error')
+  }, function fail1 (e) {
+    console.error('fail1: ', e)
+  })
+  .then(function success2 (res) {
+  }, function fail2 (e) {
+    console.error('fail2: ', e)
+  })</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;font-family:Courier New;color:#df402a;background-color:#f8f8f8;font-weight:bold;">84.process.nextTick(() =&gt; {
+  console.log('nextTick')
+})
+Promise.resolve()
+  .then(() =&gt; {
+    console.log('then')
+  })
+setImmediate(() =&gt; {
+  console.log('setImmediate')
+})</span><span style="font-size:10px;font-family:Courier New;color:#333333;background-color:#f8f8f8;">
+</span><span style="font-size:10px;font-family:Courier New;color:#0086b3;background-color:#f8f8f8;">console</span><span style="font-size:10px;font-family:Courier New;color:#333333;background-color:#f8f8f8;">.log(</span><span style="font-size:10px;font-family:Courier New;color:#dd1144;background-color:#f8f8f8;">'end'</span><span style="font-size:10px;font-family:Courier New;color:#333333;background-color:#f8f8f8;">)</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;color:#333333;background-color:#ffffff;">运行结果：</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;font-family:Courier New;color:#333333;background-color:#f8f8f8;">end
+nextTick
+</span><span style="font-size:12px;font-family:Courier New;color:#333333;background-color:#f8f8f8;font-weight:bold;">then</span><span style="font-size:12px;font-family:Courier New;color:#333333;background-color:#f8f8f8;">
+</span><span style="font-size:12px;font-family:Courier New;color:#0086b3;background-color:#f8f8f8;">set</span><span style="font-size:12px;font-family:Courier New;color:#333333;background-color:#f8f8f8;">Immediate</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:12px;color:#333333;background-color:#ffffff;">解释：</span><span style="font-size:12px;font-family:Courier New;color:#4e5980;background-color:#f8f8f8;">process.nextTick</span><span style="font-size:12px;color:#333333;background-color:#ffffff;"> 和 </span><span style="font-size:12px;font-family:Courier New;color:#4e5980;background-color:#f8f8f8;">promise.then</span><span style="font-size:12px;color:#333333;background-color:#ffffff;"> 都属于 microtask，而 </span><span style="font-size:12px;font-family:Courier New;color:#4e5980;background-color:#f8f8f8;">setImmediate</span><span style="font-size:12px;color:#333333;background-color:#ffffff;"> 属于 macrotask，在事件循环的 check 阶段执行。事件循环的每个阶段（macrotask）之间都会执行 microtask，事件循环的开始会先执行一次 microtask。</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;font-family:Courier New;color:#df402a;background-color:#f8f8f8;font-weight:bold;">85.JS用的是什么版本，你怎么解决兼容性问题。兼容的浏览器都有哪些，具体是什么说出来？</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;font-family:Courier New;color:#df402a;background-color:#f8f8f8;font-weight:bold;">86.你最近看过什么书，名字是什么，具体是什么说出来</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;font-family:Courier New;color:#df402a;background-color:#f8f8f8;font-weight:bold;">87.你工作的内容pc还是mobile多，你处理前端页面多还是数据多</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;font-family:Courier New;color:#df402a;background-color:#f8f8f8;font-weight:bold;">88.Vue和Vuex的关系是什么？</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;font-family:Courier New;color:#df402a;background-color:#f8f8f8;font-weight:bold;">89.你了解过混合开发吗，有体现在哪个项目中吗‘，除了微信的。用什么开发？</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;font-family:Courier New;color:#df402a;background-color:#f8f8f8;font-weight:bold;">90.比如一个api保存在哪里，靠什么集成，它的构造函数是谁？怎么拿到的？</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;font-family:Courier New;color:#df402a;background-color:#f8f8f8;font-weight:bold;">91.http1.0和http2.0的区别，除了他们还有shenm</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;font-family:Courier New;color:#df402a;background-color:#f8f8f8;font-weight:bold;">92.SSL的原理是什么</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;font-family:Courier New;color:#df402a;background-color:#f8f8f8;font-weight:bold;">93.你了解过java语言吗</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;font-family:Courier New;color:#df402a;background-color:#f8f8f8;font-weight:bold;">94.Get和Post的区别是什么，post安全吗？</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;font-family:Courier New;color:#df402a;background-color:#f8f8f8;font-weight:bold;">95.HTML5 为什么只需要写 &lt;!DOCTYPE HTML&gt;？</span></div><div style="display:table; white-space: pre-wrap;" id="9245-1513590369246" yne-bulb-block="todo"><div style="border: 1px solid rgb(187, 187, 187); width: 1em; height: 1em; line-height: 1; position: relative; display:inline-flex;"></div><div style="display: table-cell; word-break: break-word; padding-left: 8px; width: 100%;"><span style="font-family:Arial;color:#494949;">HTML 4.01 </span><span style="font-family:SimSun,STSong;color:#494949;">中的</span><span style="font-family:Arial;color:#494949;"> doctype </span><span style="font-family:SimSun,STSong;color:#494949;">需要对</span><span style="font-family:Arial;color:#494949;"> DTD </span><span style="font-family:SimSun,STSong;color:#494949;">进行引用，因为</span><span style="font-family:Arial;color:#494949;"> HTML 4.01 </span><span style="font-family:SimSun,STSong;color:#494949;">基于</span><span style="font-family:Arial;color:#494949;"> SGML</span><span style="font-family:SimSun,STSong;color:#494949;">。而</span><span style="font-family:Arial;color:#494949;"> HTML 5 </span><span style="font-family:SimSun,STSong;color:#494949;">不基于</span><span style="font-family:Arial;color:#494949;"> SGML</span><span style="font-family:SimSun,STSong;color:#494949;">，因此不需要对</span><span style="font-family:Arial;color:#494949;"> DTD </span><span style="font-family:SimSun,STSong;color:#494949;">进行引用，但是需要</span><span style="font-family:Arial;color:#494949;"> doctype </span><span style="font-family:SimSun,STSong;color:#494949;">来规范浏览器的行为。其中，</span><span style="font-family:Arial;color:#494949;">SGML</span><span style="font-family:SimSun,STSong;color:#494949;">是标准通用标记语言</span><span style="font-family:Arial;color:#494949;">,</span><span style="font-family:SimSun,STSong;color:#494949;">简单的说，就是比</span><span style="font-family:Arial;color:#494949;">HTML,XML</span><span style="font-family:SimSun,STSong;color:#494949;">更老的标准，这两者都是由</span><span style="font-family:Arial;color:#494949;">SGML</span><span style="font-family:SimSun,STSong;color:#494949;">发展而来的。</span><span style="font-family:Arial;color:#494949;">BUT</span><span style="font-family:SimSun,STSong;color:#494949;">，</span><span style="font-family:Arial;color:#494949;">HTML5</span><span style="font-family:SimSun,STSong;color:#494949;">不是的。</span></div></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;font-family:Courier New;color:#df402a;background-color:#f8f8f8;font-weight:bold;">96.行内元素有哪些？块级元素有哪些？ 空(void)元素有那些？</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">    <span style="color:#494949;">块级元素的前后的前后都会自动换行，如同存在换行符一样，默认情况下，块级元素会独占一行，例如&lt;p&gt;&lt;div&gt;&lt;hn&gt;都是块级元素。在显示这些元素中间的文本时，都将从新行中开始显示，其后的内容也将在新行中显示</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="font-size:16px;font-family:Courier New;color:#df402a;background-color:#f8f8f8;font-weight:bold;">97.线程与进程（1月4日）？</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">    <span style="color:#494949;">1.定义</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">    <span style="color:#494949;">进程是具有一定独立功能的程序关于某个数据集合上的一次运行活动,进程是系统进行资源分配和调度的一个独立单位.</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">    <span style="color:#494949;">线程是进程的一个实体,是CPU调度和分派的基本单位,它是比进程更小的能独立运行的基本单位.线程自己基本上不拥有系统资源,只拥有一点在运行中必不可少的资源(如程序计数器,一组寄存器和栈),但是它可与同属一个进程的其他的线程共享进程所拥有的全部资源.</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">    <span style="color:#494949;">2.关系</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">    <span style="color:#494949;">一个线程可以创建和撤销另一个线程;同一个进程中的多个线程之间可以并发执行.</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">    <span style="color:#494949;">相对进程而言，线程是一个更加接近于执行体的概念，它可以与同进程中的其他线程共享数据，但拥有自己的栈空间，拥有独立的执行序列。</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">    <span style="color:#494949;">3.区别</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">    <span style="color:#494949;">进程和线程的主要差别在于它们是不同的操作系统资源管理方式。进程有独立的地址空间，一个进程崩溃后，在保护模式下不会对其它进程产生影响，而线程只是一个进程中的不同执行路径。线程有自己的堆栈和局部变量，但线程之间没有单独的地址空间，一个线程死掉就等于整个进程死掉，所以多进程的程序要比多线程的程序健壮，但在进程切换时，耗费资源较大，效率要差一些。但对于一些要求同时进行并且又要共享某些变量的并发操作，只能用线程，不能用进程。</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">    <span style="color:#494949;">1) 简而言之,一个程序至少有一个进程,一个进程至少有一个线程.</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">    <span style="color:#494949;">2) 线程的划分尺度小于进程，使得多线程程序的并发性高。</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">    <span style="color:#494949;">3) 另外，进程在执行过程中拥有独立的内存单元，而多个线程共享内存，从而极大地提高了程序的运行效率。</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">    <span style="color:#494949;">4) 线程在执行过程中与进程还是有区别的。每个独立的线程有一个程序运行的入口、顺序执行序列和程序的出口。但是线程不能够独立执行，必须依存在应用程序中，由应用程序提供多个线程执行控制。</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">    <span style="color:#494949;">5) 从逻辑角度来看，多线程的意义在于一个应用程序中，有多个执行部分可以同时执行。但操作系统并没有将多个线程看做多个独立的应用，来实现进程的调度和管理以及资源分配。这就是进程和线程的重要区别。</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">    <span style="color:#494949;">4.优缺点</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph">    <span style="color:#494949;">线程和进程在使用上各有优缺点：线程执行开销小，但不利于资源的管理和保护；而进程正相反。同时，线程适合于在SMP机器上运行，而进程则可以跨机器迁移。</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><span style="color:#494949;">98.</span></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><br></div><div style="white-space: pre-wrap;" yne-bulb-block="paragraph"><br></div></div>
+
+
+</article></body></html>
